@@ -12,7 +12,7 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_14fvm"]
-vertices = PackedVector3Array(-4.5, 0.75, -4.5, -4.5, 0.75, 4.5, 14.5, 0.75, 4.5, 14.5, 0.75, -4.5)
+vertices = PackedVector3Array(-4.5, 1, -14.5, -4.5, 1, 4.5, 4.5, 1, 4.5, 4.5, 1, -14.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lc8ug"]
@@ -24,10 +24,10 @@ size = Vector3(10, 1, 10)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evj0c"]
 bg_color = Color(0.972549, 0, 0, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ay1u5"]
-
 [sub_resource type="PrismMesh" id="PrismMesh_7xilk"]
 size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ay1u5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yn1ts"]
 
@@ -44,7 +44,7 @@ script = ExtResource("1_xdjnf")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.2, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, -10.5)
 collision_mask = 15
 metadata/_edit_group_ = true
 
@@ -55,7 +55,6 @@ shape = SubResource("SphereShape3D_h4f0s")
 mesh = SubResource("SphereMesh_ecm8t")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_14fvm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
@@ -69,7 +68,7 @@ mesh = SubResource("BoxMesh_lc8ug")
 shape = SubResource("BoxShape3D_s25oe")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 collision_mask = 14
 metadata/_edit_group_ = true
 
@@ -79,6 +78,19 @@ mesh = SubResource("BoxMesh_lc8ug")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
 shape = SubResource("BoxShape3D_s25oe")
 
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.707107, 0.707107, 0, 0.707107, 0.707107, -1, 3.09086e-08, -3.09086e-08, 0, 2.28386, 0)
+spring_length = 10.0
+script = ExtResource("3_h238x")
+playerRef = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+
+[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D"]
+transform = Transform3D(1, 3.55271e-15, -3.55271e-15, 0, 1, -9.55342e-16, 0, -9.55342e-16, 1, 0, 0, 0)
+enabled = false
+target_position = Vector3(0, 0, -100)
+
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28386, 0)
 collision_layer = 2
@@ -86,7 +98,6 @@ collision_mask = 13
 script = ExtResource("2_0wr16")
 jumpForce = 500.0
 mouseSpeed = 0.25
-springRef = NodePath("SpringArm3D")
 metadata/_edit_group_ = true
 
 [node name="Control" type="Control" parent="Player"]
@@ -161,7 +172,6 @@ step = 0.2
 value = 100.0
 
 [node name="ColorRect" type="ColorRect" parent="Player/Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,29 +187,20 @@ grow_vertical = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="Player"]
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.25551, 0)
+mesh = SubResource("PrismMesh_7xilk")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_ay1u5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/MeshInstance3D2"]
-transform = Transform3D(1, 0, 0, 0, -1.36345e-07, 1, 0, -3.11921, -4.37114e-08, 0, 1.25551, 0)
-mesh = SubResource("PrismMesh_7xilk")
-skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_yn1ts")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-spring_length = 10.0
-script = ExtResource("3_h238x")
-playerRef = NodePath("..")
-
-[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
-
 [node name="SummoningSystem" type="Node" parent="Player"]
 
 [node name="BaseAI" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5.10195, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.10195, -6)
 collision_layer = 4
 collision_mask = 15
 metadata/_edit_group_ = true
