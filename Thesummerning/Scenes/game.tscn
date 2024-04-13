@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://dm6n4momub01u"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_8584d"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_42rvk"]
+[ext_resource type="Script" path="res://scripts/CamCtrlr.gd" id="3_tixg8"]
+[ext_resource type="Script" path="res://scripts/base_ai.gd" id="4_4icnd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yn1ts"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6llir"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ejvuy"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_14fvm"]
+vertices = PackedVector3Array(-4.5, 1, -14.5, -4.5, 1, 4.5, 4.5, 1, 4.5, 4.5, 1, -14.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lc8ug"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s25oe"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h4f0s"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ecm8t"]
+radius = 1.0
+height = 2.0
+
+[node name="Game" type="Node"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_8584d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28386, 0)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("2_42rvk")
+jumpForce = 1200.0
+mouseSpeed = 0.25
+cameraRef = NodePath("Camera3D")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_yn1ts")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_tixg8")
+
+[node name="Control" type="Control" parent="Player"]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Player/Control"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 206.0
+grow_vertical = 0
+step = 0.2
+
+[node name="ColorRect" type="ColorRect" parent="Player/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseAI" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.10195, -6)
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("4_4icnd")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseAI"]
+shape = SubResource("CapsuleShape3D_6llir")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseAI"]
+mesh = SubResource("CapsuleMesh_ejvuy")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_14fvm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, -10.5)
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_h4f0s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_ecm8t")
