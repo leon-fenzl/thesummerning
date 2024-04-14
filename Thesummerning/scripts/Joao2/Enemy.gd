@@ -1,8 +1,9 @@
 extends CharacterBody3D
+class_name EnemyC
 
-
-const SPEED = 2
+@export var SPEED = 2
 const JUMP_VELOCITY = 4.5
+@export var DAMAGE = 10
 
 var acell = 10
 
@@ -25,9 +26,6 @@ func _physics_process(delta):
 func update_target_location(target_location):
 	nav_agent.set_target_position(target_location)
 
-
 func chegou():
-	print("chegou")
 	arrived = true
-	#print("chegou")
 	pass # Replace with function body.
