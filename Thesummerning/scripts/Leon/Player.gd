@@ -5,10 +5,10 @@ extends CharacterBody3D
 @export var mouseSpeed:float
 @export var controllerSpeed:float
 
-
 @onready var camera = Camera3D
 @export var springRef : NodePath
 @onready var spring = get_node(springRef)
+
 @onready var gravityVector = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 @onready var walkInputs := Vector2.ZERO
 @onready var direction := Vector3.ZERO
@@ -39,7 +39,8 @@ func LookAtSystem():
 		var pos = Vector3(rayhitInfo.position.x,global_position.y,rayhitInfo.position.z)
 		$MeshInstance3D2.look_at(pos,Vector3.UP)
 	else:
-		$MeshInstance3D2.look_at(position+direction)
+		if(direction.length()!=0):
+			$MeshInstance3D2.look_at(position+direction)
 func Walk(DELTA:float):
 	walkInputs = Input.get_vector("left","right","forward","back")
 	direction = Vector3(walkInputs.x,0,walkInputs.y).normalized()
