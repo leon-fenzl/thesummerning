@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0m2q3j1on2nm"]
+
+[ext_resource type="Script" path="res://scripts/Joao2/Enemy.gd" id="1_g872p"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_me23r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p2ro5"]
+
+[node name="EnemyBase" type="Node3D"]
+
+[node name="EnemyFangirl" type="CharacterBody3D" parent="." groups=["enemy"]]
+transform = Transform3D(0.114987, 0.000114126, -0.000135918, -0.000114013, 0.114987, 9.37594e-05, 0.000136013, -9.36221e-05, 0.114987, 1.84349, 0.220525, -0.382132)
+script = ExtResource("1_g872p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyFangirl"]
+mesh = SubResource("CapsuleMesh_me23r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyFangirl"]
+shape = SubResource("CapsuleShape3D_p2ro5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="EnemyFangirl"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+
+[connection signal="target_reached" from="EnemyFangirl/NavigationAgent3D" to="EnemyFangirl" method="chegou"]
