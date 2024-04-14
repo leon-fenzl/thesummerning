@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dm6n4momub01u"]
+[gd_scene load_steps=16 format=3 uid="uid://dm6n4momub01u"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_xdjnf"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/CharacterScenes/player.tscn" id="2_ghe10"]
 [ext_resource type="PackedScene" uid="uid://djaefgpyuewy5" path="res://Scenes/CharacterScenes/TestAI.tscn" id="3_dtncv"]
 [ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
 [ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="5_0m67v"]
-[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="5_70seh"]
 [ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/CharacterScenes/TargetingSystem.tscn" id="5_ljnbf"]
 [ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/testScenes/spawner.tscn" id="8_vk0r3"]
 
@@ -23,9 +22,6 @@ radius = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_ecm8t"]
 radius = 1.0
 height = 2.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_n1gvs"]
-radius = 1.3
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_14fvm"]
 vertices = PackedVector3Array(-5.25001, 0.499998, -6.25001, -5.25001, 0.499998, -14.5, -14.5, 0.499998, -14.5, -14.5, 0.499998, -6.00001, -3.00001, 0.499998, 4.49999, -3.00001, 0.499998, -4.50001, -5.00001, 0.499998, -4.50001, -5.00001, 0.499998, -4.50001, -5.25001, 0.499998, -6.25001, -14.5, 0.499998, -6.00001, -14.5, 0.499998, 4.49999, -3.00001, 0.499998, 4.49999, -5.00001, 0.499998, -4.50001, -14.5, 0.499998, -6.00001, -3.00001, 0.499998, 4.49999, 14.5, 0.499998, 4.49999, 14.5, 0.499998, -4.50001, -3.00001, 0.499998, -4.50001)
@@ -130,6 +126,54 @@ styleType = ExtResource("5_0m67v")
 sceneType = ExtResource("3_dtncv")
 spawnerRef = NodePath("../../../Spawner")
 
+[node name="Btt_Summonning2" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 64.0
+offset_right = -48.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="Btt_Summonning3" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 64.0
+offset_right = 48.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="Btt_Summonning4" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+spawnerRef = NodePath("../../../Spawner")
+
 [node name="MenuPause" type="Control" parent="UserInterface"]
 visible = false
 layout_mode = 3
@@ -158,28 +202,6 @@ shape = SubResource("SphereShape3D_h4f0s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_ecm8t")
-
-[node name="CompDamage" parent="RigidBody3D" instance=ExtResource("5_70seh")]
-tagetType = "summer"
-
-[node name="CollisionShape3D" parent="RigidBody3D/CompDamage/Area3D" index="0"]
-shape = SubResource("SphereShape3D_n1gvs")
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87946, 3.2, 0.5)
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
-shape = SubResource("SphereShape3D_h4f0s")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
-mesh = SubResource("SphereMesh_ecm8t")
-
-[node name="CompDamage" parent="RigidBody3D2" instance=ExtResource("5_70seh")]
-
-[node name="CollisionShape3D" parent="RigidBody3D2/CompDamage/Area3D" index="0"]
-shape = SubResource("SphereShape3D_n1gvs")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
@@ -304,13 +326,10 @@ shape = SubResource("BoxShape3D_s25oe")
 [node name="TargetingSystem" parent="." instance=ExtResource("5_ljnbf")]
 playerRef = NodePath("../Player")
 
-[node name="Player" parent="." groups=["summer"] instance=ExtResource("2_ghe10")]
+[node name="Player" parent="." instance=ExtResource("2_ghe10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
 speed = 2000.0
 jumpForce = 1000.0
 springRef = NodePath("../TargetingSystem")
 
 [node name="Spawner" parent="." instance=ExtResource("8_vk0r3")]
-
-[editable path="RigidBody3D/CompDamage"]
-[editable path="RigidBody3D2/CompDamage"]

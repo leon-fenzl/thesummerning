@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2kucrvl6bwwk"]
+[gd_scene load_steps=7 format=3 uid="uid://b2kucrvl6bwwk"]
 
 [ext_resource type="Script" path="res://scripts/Leon/Player.gd" id="1_q3nlc"]
+[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="2_7ag0n"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ay1u5"]
 
@@ -38,3 +39,5 @@ shape = SubResource("CapsuleShape3D_yn1ts")
 
 [node name="SummoningSystem" type="Node" parent="."]
 script = SubResource("GDScript_w6c3s")
+
+[node name="CompLife" parent="." instance=ExtResource("2_7ag0n")]

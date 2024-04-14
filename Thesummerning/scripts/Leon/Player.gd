@@ -8,6 +8,8 @@ extends CharacterBody3D
 @export var springRef : NodePath
 @onready var spring = get_node(springRef)
 
+@onready var compLife = $CompLife
+
 @onready var gravityVector = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 @onready var walkInputs := Vector2.ZERO
 @onready var direction := Vector3.ZERO
@@ -39,7 +41,6 @@ func Walk(DELTA:float):
 	walkInputs = Input.get_vector("left","right","forward","back")
 	direction = Vector3(walkInputs.x,0,walkInputs.y).normalized()
 	direction = direction.rotated(Vector3.UP,spring.rotation.y).normalized()
-	print(direction.length())
 	direction.x = lerp(direction.x,direction.x*speed*DELTA,10*DELTA)
 	direction.z = lerp(direction.z,direction.z*speed*DELTA,10*DELTA)
 #func Jump(DELTA:float):

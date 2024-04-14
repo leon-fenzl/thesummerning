@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://djaefgpyuewy5"]
+[gd_scene load_steps=5 format=3 uid="uid://djaefgpyuewy5"]
+
+[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="1_tmwpk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6llir"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejvuy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2hs7w"]
+height = 1.39871
+radius = 0.748969
 
 [node name="TestAI" type="CharacterBody3D"]
 collision_layer = 4
@@ -14,3 +20,10 @@ shape = SubResource("CapsuleShape3D_6llir")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_ejvuy")
+
+[node name="CompDamage" parent="." instance=ExtResource("1_tmwpk")]
+
+[node name="CollisionShape3D" parent="CompDamage/Area3D" index="0"]
+shape = SubResource("CylinderShape3D_2hs7w")
+
+[editable path="CompDamage"]
