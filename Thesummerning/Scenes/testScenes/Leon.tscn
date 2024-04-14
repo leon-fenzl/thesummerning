@@ -19,7 +19,7 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_14fvm"]
-vertices = PackedVector3Array(-4.5, 0.75, -4.5, -4.5, 0.75, 4.5, 14.5, 0.75, 4.5, 14.5, 0.75, -4.5)
+vertices = PackedVector3Array(-4.5, 0.50266, -4.5, -4.5, 0.50266, 4.5, 14.5, 0.25266, 4.5, 14.5, 0.25266, -4.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lc8ug"]
@@ -34,7 +34,7 @@ size = Vector3(10, 1, 10)
 process_mode = 3
 script = ExtResource("1_xdjnf")
 
-[node name="Control" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
 process_mode = 3
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
@@ -46,7 +46,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -61,7 +61,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ProgressBar2" type="ProgressBar" parent="Control"]
+[node name="ProgressBar2" type="ProgressBar" parent="HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -76,7 +76,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ProgressBar3" type="ProgressBar" parent="Control"]
+[node name="ProgressBar3" type="ProgressBar" parent="HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -91,7 +91,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ProgressBar4" type="ProgressBar" parent="Control"]
+[node name="ProgressBar4" type="ProgressBar" parent="HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -106,7 +106,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="HUD"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
@@ -119,7 +119,7 @@ grow_vertical = 2
 pivot_offset = Vector2(5, 5)
 script = ExtResource("3_5akf2")
 
-[node name="Btt_Summon" parent="Control" instance=ExtResource("4_21bmf")]
+[node name="Btt_Summon" parent="HUD" instance=ExtResource("4_21bmf")]
 layout_mode = 1
 styleType = ExtResource("5_0m67v")
 sceneType = ExtResource("3_dtncv")
@@ -144,6 +144,7 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_14fvm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497339, 0)
 collision_mask = 14
 metadata/_edit_group_ = true
 
@@ -154,7 +155,7 @@ mesh = SubResource("BoxMesh_lc8ug")
 shape = SubResource("BoxShape3D_s25oe")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, 0)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, -0.497339, 0)
 collision_mask = 14
 metadata/_edit_group_ = true
 
@@ -171,7 +172,5 @@ playerRef = NodePath("../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
 springRef = NodePath(".")
 
-[node name="TestAI" parent="." instance=ExtResource("3_dtncv")]
-
-[connection signal="button_down" from="Control/Btt_Summon" to="Control/Btt_Summon" method="_on_button_down"]
-[connection signal="button_up" from="Control/Btt_Summon" to="Control/Btt_Summon" method="_on_button_up"]
+[connection signal="button_down" from="HUD/Btt_Summon" to="HUD/Btt_Summon" method="_on_button_down"]
+[connection signal="button_up" from="HUD/Btt_Summon" to="HUD/Btt_Summon" method="_on_button_up"]

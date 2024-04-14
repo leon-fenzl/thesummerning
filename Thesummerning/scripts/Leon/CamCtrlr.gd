@@ -7,14 +7,16 @@ extends SpringArm3D
 @onready var mousepos
 @onready var rayOrigin 
 @onready var rayEnd
-@onready var query 
+@onready var query
+@onready var queryDictionary : Dictionary
 func _physics_process(delta):
 	position = lerp(position,player.global_position,10*delta)
 	DrawRaycast()
-	player.rayhitInfo = query 
+	player.rayhitInfo = queryDictionary
 func DrawRaycast():
 	world = get_world_3d().direct_space_state
 	mousepos = get_viewport().get_mouse_position()
 	rayOrigin = camera.project_ray_origin(mousepos)
 	rayEnd = rayOrigin + camera.project_position(mousepos,1000)
-	query = world.intersect_ray(PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd))
+	query = PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd)
+	queryDictionary = world.intersect_ray(query)
