@@ -5,7 +5,6 @@ extends CharacterBody3D
 @export var mouseSpeed:float
 @export var controllerSpeed:float
 
-@onready var camera = Camera3D
 @export var springRef : NodePath
 @onready var spring = get_node(springRef)
 
@@ -17,9 +16,10 @@ extends CharacterBody3D
 
 @onready var collider := $CollisionShape3D
 @onready var col = KinematicCollision3D
-
+@onready var rayhitInfo
 func _physics_process(delta):
 	GravitySystem(delta)
+	LookAtSystem()
 	Walk(delta)
 	Jump(delta)
 	GetCollisions()
@@ -30,11 +30,6 @@ func GravitySystem(DELTA:float):
 		fallDirection += gravityVector * 10 * DELTA
 	else: fallDirection = -get_floor_normal()
 func LookAtSystem():
-	var world = get_world_3d().direct_space_state
-	var mousepos = get_viewport().get_mouse_position()
-	var rayOrigin = $SpringArm3D/Camera3D.project_ray_origin(mousepos)
-	var rayEnd = rayOrigin + $SpringArm3D/Camera3D.project_position(mousepos,1000)
-	var rayhitInfo = world.intersect_ray(PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd))
 	if Input.is_action_pressed("shoot") && !rayhitInfo.is_empty():
 		var pos = Vector3(rayhitInfo.position.x,global_position.y,rayhitInfo.position.z)
 		$MeshInstance3D2.look_at(pos,Vector3.UP)
@@ -45,7 +40,6 @@ func Walk(DELTA:float):
 	walkInputs = Input.get_vector("left","right","forward","back")
 	direction = Vector3(walkInputs.x,0,walkInputs.y).normalized()
 	direction = direction.rotated(Vector3.UP,spring.rotation.y).normalized()
-	LookAtSystem()
 	direction.x = lerp(direction.x,direction.x*speed*DELTA,10*DELTA)
 	direction.z = lerp(direction.z,direction.z*speed*DELTA,10*DELTA)
 func Jump(DELTA:float):
