@@ -1,8 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dm6n4momub01u"]
+[gd_scene load_steps=14 format=3 uid="uid://dm6n4momub01u"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_xdjnf"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/CharacterScenes/player.tscn" id="2_ghe10"]
 [ext_resource type="Script" path="res://scripts/Leon/playerTarget.gd" id="3_5akf2"]
+[ext_resource type="PackedScene" uid="uid://djaefgpyuewy5" path="res://Scenes/CharacterScenes/TestAI.tscn" id="3_dtncv"]
+[ext_resource type="PackedScene" uid="uid://bxhuorsmqdbn0" path="res://Scenes/CharacterScenes/btt_summon.tscn" id="4_21bmf"]
+[ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="5_0m67v"]
+[ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/CharacterScenes/TargetingSystem.tscn" id="5_ljnbf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jule"]
+bg_color = Color(0.972549, 0, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h4f0s"]
 radius = 1.0
@@ -21,73 +28,14 @@ size = Vector3(10, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_s25oe"]
 size = Vector3(10, 1, 10)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6llir"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ejvuy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jule"]
-bg_color = Color(0.972549, 0, 0, 1)
-
 [node name="Game" type="Node"]
 
 [node name="GameManager" type="Node" parent="."]
+process_mode = 3
 script = ExtResource("1_xdjnf")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.2, 0.5)
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-shape = SubResource("SphereShape3D_h4f0s")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-mesh = SubResource("SphereMesh_ecm8t")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
-navigation_mesh = SubResource("NavigationMesh_14fvm")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
-collision_mask = 14
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
-mesh = SubResource("BoxMesh_lc8ug")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_s25oe")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, 0)
-collision_mask = 14
-metadata/_edit_group_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
-mesh = SubResource("BoxMesh_lc8ug")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
-shape = SubResource("BoxShape3D_s25oe")
-
-[node name="Player" parent="." instance=ExtResource("2_ghe10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
-
-[node name="BaseAI" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 1)
-collision_layer = 4
-collision_mask = 15
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseAI"]
-shape = SubResource("CapsuleShape3D_6llir")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BaseAI"]
-mesh = SubResource("CapsuleMesh_ejvuy")
-
 [node name="Control" type="Control" parent="."]
+process_mode = 3
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
 anchors_preset = 15
@@ -170,3 +118,60 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(5, 5)
 script = ExtResource("3_5akf2")
+
+[node name="Btt_Summon" parent="Control" instance=ExtResource("4_21bmf")]
+layout_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+targetingRef = NodePath("../../TargetingSystem")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.2, 0.5)
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_h4f0s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_ecm8t")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_14fvm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, 0)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="TargetingSystem" parent="." instance=ExtResource("5_ljnbf")]
+playerRef = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_ghe10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
+springRef = NodePath(".")
+
+[node name="TestAI" parent="." instance=ExtResource("3_dtncv")]
+
+[connection signal="button_down" from="Control/Btt_Summon" to="Control/Btt_Summon" method="_on_button_down"]
+[connection signal="button_up" from="Control/Btt_Summon" to="Control/Btt_Summon" method="_on_button_up"]
