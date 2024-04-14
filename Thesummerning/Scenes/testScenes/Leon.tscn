@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dm6n4momub01u"]
+[gd_scene load_steps=16 format=3 uid="uid://dm6n4momub01u"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_xdjnf"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/CharacterScenes/player.tscn" id="2_ghe10"]
 [ext_resource type="Script" path="res://scripts/Leon/playerTarget.gd" id="3_5akf2"]
 [ext_resource type="PackedScene" uid="uid://djaefgpyuewy5" path="res://Scenes/CharacterScenes/TestAI.tscn" id="3_dtncv"]
-[ext_resource type="PackedScene" uid="uid://bxhuorsmqdbn0" path="res://Scenes/CharacterScenes/btt_summon.tscn" id="4_21bmf"]
+[ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
 [ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="5_0m67v"]
 [ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/CharacterScenes/TargetingSystem.tscn" id="5_ljnbf"]
+[ext_resource type="Script" path="res://scripts/Leon/SummonSpawner.gd" id="6_nnoi3"]
+[ext_resource type="Script" path="res://scripts/Leon/spawnPoint.gd" id="9_hq3xu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jule"]
 bg_color = Color(0.972549, 0, 0, 1)
@@ -19,8 +21,8 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_14fvm"]
-vertices = PackedVector3Array(-4.5, 0.50266, -4.5, -4.5, 0.50266, 4.5, 14.5, 0.25266, 4.5, 14.5, 0.25266, -4.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(-5.25001, 0.499998, -6.25001, -5.25001, 0.499998, -14.5, -14.5, 0.499998, -14.5, -14.5, 0.499998, -6.00001, -3.00001, 0.499998, 4.49999, -3.00001, 0.499998, -4.50001, -5.00001, 0.499998, -4.50001, -5.00001, 0.499998, -4.50001, -5.25001, 0.499998, -6.25001, -14.5, 0.499998, -6.00001, -14.5, 0.499998, 4.49999, -3.00001, 0.499998, 4.49999, -5.00001, 0.499998, -4.50001, -14.5, 0.499998, -6.00001, -3.00001, 0.499998, 4.49999, 14.5, 0.499998, 4.49999, 14.5, 0.499998, -4.50001, -3.00001, 0.499998, -4.50001)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(7, 9, 8), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lc8ug"]
 size = Vector3(10, 1, 10)
@@ -34,19 +36,27 @@ size = Vector3(10, 1, 10)
 process_mode = 3
 script = ExtResource("1_xdjnf")
 
-[node name="HUD" type="Control" parent="."]
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HUD" type="Control" parent="UserInterface"]
 process_mode = 3
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1240.0
+offset_bottom = 680.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+[node name="ProgressBar" type="ProgressBar" parent="UserInterface/HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -61,7 +71,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ProgressBar2" type="ProgressBar" parent="HUD"]
+[node name="ProgressBar2" type="ProgressBar" parent="UserInterface/HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -76,7 +86,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ProgressBar3" type="ProgressBar" parent="HUD"]
+[node name="ProgressBar3" type="ProgressBar" parent="UserInterface/HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -91,7 +101,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ProgressBar4" type="ProgressBar" parent="HUD"]
+[node name="ProgressBar4" type="ProgressBar" parent="UserInterface/HUD"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -106,7 +116,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6jule")
 step = 0.2
 value = 100.0
 
-[node name="ColorRect" type="ColorRect" parent="HUD"]
+[node name="ColorRect" type="ColorRect" parent="UserInterface/HUD"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = 8
@@ -119,11 +129,94 @@ grow_vertical = 2
 pivot_offset = Vector2(5, 5)
 script = ExtResource("3_5akf2")
 
-[node name="Btt_Summon" parent="HUD" instance=ExtResource("4_21bmf")]
+[node name="Btt_Summonning" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 64.0
+offset_right = -144.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
 styleType = ExtResource("5_0m67v")
 sceneType = ExtResource("3_dtncv")
-targetingRef = NodePath("../../TargetingSystem")
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="Btt_Summonning2" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 64.0
+offset_right = -48.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="Btt_Summonning3" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 64.0
+offset_right = 48.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="Btt_Summonning4" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+styleType = ExtResource("5_0m67v")
+sceneType = ExtResource("3_dtncv")
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="Menus" type="Control" parent="UserInterface"]
+modulate = Color(0.25098, 0.25098, 0.25098, 0.74902)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuPause" type="Control" parent="UserInterface/Menus"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Menus/MenuPause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
@@ -144,25 +237,119 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_14fvm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.497339, 0)
 collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_lc8ug")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_s25oe")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, -0.497339, 0)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, 0)
 collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_lc8ug")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -10, 0, 0)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.94679)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, -9.94679)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D8" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_s25oe")
+
+[node name="StaticBody3D9" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 9.94683, 0, 10)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_lc8ug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_s25oe")
 
 [node name="TargetingSystem" parent="." instance=ExtResource("5_ljnbf")]
@@ -170,7 +357,23 @@ playerRef = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_ghe10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
-springRef = NodePath(".")
+speed = 2000.0
+jumpForce = 1000.0
+springRef = NodePath("../TargetingSystem")
 
-[connection signal="button_down" from="HUD/Btt_Summon" to="HUD/Btt_Summon" method="_on_button_down"]
-[connection signal="button_up" from="HUD/Btt_Summon" to="HUD/Btt_Summon" method="_on_button_up"]
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("6_nnoi3")
+playerRef = NodePath("../Player")
+
+[node name="spawnPoint1" type="Marker3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
+script = ExtResource("9_hq3xu")
+
+[node name="spawnPoint2" type="Marker3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, 0)
+
+[node name="spawnPoint3" type="Marker3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
+
+[node name="spawnPoint4" type="Marker3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, 0)

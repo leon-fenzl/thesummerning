@@ -5,7 +5,6 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ejvuy"]
 
 [node name="TestAI" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 4
 collision_mask = 15
 metadata/_edit_group_ = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxhuorsmqdbn0"]
 
-[ext_resource type="Script" path="res://Scenes/testScenes/Btt_Summon.gd" id="1_yy0a1"]
+[ext_resource type="Script" path="res://scripts/Leon/Btt_Drag_Drop.gd" id="1_yy0a1"]
 
 [node name="Btt_Summon" type="Button"]
 custom_minimum_size = Vector2(64, 64)
@@ -13,3 +13,6 @@ offset_right = 32.0
 offset_bottom = 128.0
 grow_horizontal = 2
 script = ExtResource("1_yy0a1")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
