@@ -1,10 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://caw78ni85sbth"]
 
-[ext_resource type="Script" path="res://scripts/Joao2/JoaoCena.gd" id="1_w1qtu"]
-[ext_resource type="PackedScene" uid="uid://borpfqsfediav" path="res://Scenes/testScenes/guarda_costas-base.tscn" id="7_ysdqa"]
-[ext_resource type="PackedScene" uid="uid://d86ty23xtkoe" path="res://Scenes/testScenes/guarda_costas-bombado.tscn" id="8_pokp8"]
-[ext_resource type="PackedScene" uid="uid://dbhaf6ou5dace" path="res://Scenes/testScenes/guarda_costas-mirim.tscn" id="9_lv8rc"]
-[ext_resource type="Script" path="res://scripts/Joao2/SpawnEnemy.gd" id="10_we43y"]
+[ext_resource type="Script" path="res://scripts/Joao/JoaoCena.gd" id="1_w1qtu"]
+[ext_resource type="PackedScene" uid="uid://borpfqsfediav" path="res://Scenes/testScenes/Joao/guarda_costas-base.tscn" id="7_ysdqa"]
+[ext_resource type="PackedScene" uid="uid://d86ty23xtkoe" path="res://Scenes/testScenes/Joao/guarda_costas-bombado.tscn" id="8_pokp8"]
+[ext_resource type="PackedScene" uid="uid://dbhaf6ou5dace" path="res://Scenes/testScenes/Joao/guarda_costas-mirim.tscn" id="9_lv8rc"]
+[ext_resource type="Script" path="res://scripts/Joao/SpawnEnemy.gd" id="10_we43y"]
+
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_iqmm1"]
 vertices = PackedVector3Array(-5.53113, 0.412465, -2.43543, -2.03113, 0.412465, -2.43543, -1.78113, 0.412465, -2.93543, -5.53113, 0.412465, -8.43543, 1.71887, 0.412465, -2.93543, 1.96887, 0.412465, -2.43543, 5.46887, 0.412465, -2.43543, 5.46887, 0.412465, -8.43543, -1.78113, 0.412465, -2.93543, 1.71887, 0.412465, -2.93543, 5.46887, 0.412465, -8.43543, -5.53113, 0.412465, -8.43543, -2.03113, 0.412465, 2.31457, -0.0311279, 0.412465, 2.06457, -0.0311279, 0.412465, 0.564573, -2.03113, 0.412465, 0.314573, -2.03113, 0.412465, 2.31457, -2.03113, 0.412465, 0.314573, -5.53113, 0.412465, -2.43543, -2.03113, 0.412465, 0.314573, -2.03113, 0.412465, -2.43543, -5.53113, 0.412465, -2.43543, -5.53113, 0.412465, 8.31457, -2.28113, 0.412465, 8.31457, -2.03113, 0.412465, 4.31457, -2.03113, 0.412465, 2.31457, -5.53113, 0.412465, -2.43543, 1.96887, 0.412465, 0.314573, -0.0311279, 0.412465, 0.564573, -0.0311279, 0.412465, 2.06457, 2.21887, 0.412465, 2.06457, 2.21887, 0.412465, 2.06457, 2.21887, 0.662465, 3.06457, 5.46887, 0.412465, 5.06457, 2.21887, 0.662465, 3.06457, -1.03113, 1.16247, 3.06457, -1.03113, 1.16247, 3.56457, 2.21887, 0.662465, 3.56457, 1.13554, 1.16247, 3.06457, 1.13554, 1.16247, 3.56457, 5.46887, 0.412465, -2.43543, 1.96887, 0.412465, -2.43543, 1.96887, 0.412465, 0.314573, 2.21887, 0.412465, 2.06457, 5.46887, 0.412465, 5.06457, 2.21887, 0.662465, 3.56457, 2.21887, 0.412465, 4.56457, 5.46887, 0.412465, 5.06457, 2.21887, 0.662465, 3.06457, 2.21887, 0.662465, 3.56457, 5.46887, 0.412465, 5.06457, -1.03113, 1.41247, -1.93543, -1.03113, 1.41247, -0.435427, 0.968872, 1.41247, -0.435427, 0.968872, 1.41247, -1.93543, 5.46887, 0.412465, 8.31457, 5.46887, 0.412465, 5.06457, 2.21887, 0.412465, 4.56457, -2.03113, 0.412465, 4.31457, -2.28113, 0.412465, 8.31457)

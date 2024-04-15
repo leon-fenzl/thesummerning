@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnhy6jjtl8g4k"]
+
+[ext_resource type="PackedScene" uid="uid://d0m2q3j1on2nm" path="res://Scenes/testScenes/Joao/EnemyBase.tscn" id="1_w3bp4"]
+[ext_resource type="Script" path="res://scripts/Joao/EnemyTiozao.gd" id="2_664ol"]
+
+[node name="EnemyTiozao" instance=ExtResource("1_w3bp4")]
+
+[node name="Enemy" parent="." index="0"]
+script = ExtResource("2_664ol")
+SPEED = 0.5

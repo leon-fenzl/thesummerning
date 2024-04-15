@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0m2q3j1on2nm"]
 
-[ext_resource type="Script" path="res://scripts/Joao2/Enemy.gd" id="1_g872p"]
+[ext_resource type="Script" path="res://scripts/Joao/Enemy.gd" id="1_g872p"]
 [ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="2_qpdy2"]
 [ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="3_3cdqn"]
+
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_me23r"]
 

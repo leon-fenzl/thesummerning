@@ -1,6 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cw4oww1706k4j"]
 
-[ext_resource type="Script" path="res://scripts/Joao2/TestPerson.gd" id="1_a5dk3"]
+[ext_resource type="Script" path="res://scripts/Joao/TestPerson.gd" id="1_a5dk3"]
+
 
 
 [sub_resource type="BoxMesh" id="BoxMesh_f7ott"]
