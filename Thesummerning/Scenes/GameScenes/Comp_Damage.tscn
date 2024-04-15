@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhx5q6ijk3xey"]
 
-[ext_resource type="Script" path="res://scripts/Leon/Comp_Life.gd" id="1_7q6mc"]
+[ext_resource type="Script" path="res://scripts/Leon/CompDamage.gd" id="1_1usbo"]
 
 [node name="CompDamage" type="Node3D"]
-script = ExtResource("1_7q6mc")
+script = ExtResource("1_1usbo")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 4

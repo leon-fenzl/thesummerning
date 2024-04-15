@@ -1,8 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cw4oww1706k4j"]
 
 [ext_resource type="Script" path="res://scripts/Joao2/TestPerson.gd" id="1_a5dk3"]
-[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="2_vns5x"]
-[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="3_qj4eb"]
+
 
 [sub_resource type="BoxMesh" id="BoxMesh_f7ott"]
 
@@ -47,16 +46,5 @@ transform = Transform3D(1, 0, 0, 0, 0.846212, 0.532847, 0, -0.532847, 0.846212, 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.534756, 0.838547, -0.104285, -0.823043, 0.544829, 0.160505, 0.191409, 0, 0.98151, -2.93097, 0, 0)
 
-[node name="CompDamage" parent="." instance=ExtResource("2_vns5x")]
-transform = Transform3D(0.168655, 0, 0, 0, 0.168655, 0, 0, 0, 0.168655, 1.21236, 0.313079, -0.336542)
-tagetType = "summer"
 
-[node name="Area3D" parent="CompDamage" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.272215, 0, 0.113249)
 
-[node name="CollisionShape3D" parent="CompDamage/Area3D" index="0"]
-shape = SubResource("SphereShape3D_fjxpj")
-
-[node name="CompLife" parent="CompDamage" instance=ExtResource("3_qj4eb")]
-
-[editable path="CompDamage"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cifohgtnaqrb4"]
 
-[ext_resource type="Script" path="res://scripts/Leon/Comp_Damage.gd" id="1_lkqx7"]
+[ext_resource type="Script" path="res://scripts/Leon/CompLife.gd" id="1_qrafh"]
 
 [node name="CompLife" type="Node3D"]
-script = ExtResource("1_lkqx7")
+script = ExtResource("1_qrafh")

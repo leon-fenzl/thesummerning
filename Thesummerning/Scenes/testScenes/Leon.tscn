@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dm6n4momub01u"]
+[gd_scene load_steps=16 format=3 uid="uid://dm6n4momub01u"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_xdjnf"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/CharacterScenes/player.tscn" id="2_ghe10"]
 [ext_resource type="Script" path="res://Scenes/testScenes/HUDCtrlr.gd" id="2_l4ffy"]
-[ext_resource type="PackedScene" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
+[ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
 [ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="5_0m67v"]
-[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="5_70seh"]
 [ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/CharacterScenes/TargetingSystem.tscn" id="5_ljnbf"]
-[ext_resource type="PackedScene" path="res://Scenes/testScenes/spawner.tscn" id="8_vk0r3"]
+[ext_resource type="PackedScene" uid="uid://ckv4jmcomuqy" path="res://Scenes/testScenes/enemy_FanGirlTest.tscn" id="8_b1j1j"]
+[ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/testScenes/spawner.tscn" id="8_vk0r3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h4f0s"]
 radius = 1.0
@@ -15,9 +15,6 @@ radius = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_ecm8t"]
 radius = 1.0
 height = 2.0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_n1gvs"]
-radius = 1.3
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_14fvm"]
 vertices = PackedVector3Array(-5.25001, 0.499998, -6.25001, -5.25001, 0.499998, -14.5, -14.5, 0.499998, -14.5, -14.5, 0.499998, -6.00001, -3.00001, 0.499998, 4.49999, -3.00001, 0.499998, -4.50001, -5.00001, 0.499998, -4.50001, -5.00001, 0.499998, -4.50001, -5.25001, 0.499998, -6.25001, -14.5, 0.499998, -6.00001, -14.5, 0.499998, 4.49999, -3.00001, 0.499998, 4.49999, -5.00001, 0.499998, -4.50001, -14.5, 0.499998, -6.00001, -3.00001, 0.499998, 4.49999, 14.5, 0.499998, 4.49999, 14.5, 0.499998, -4.50001, -3.00001, 0.499998, -4.50001)
@@ -52,12 +49,6 @@ shape = SubResource("SphereShape3D_h4f0s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_ecm8t")
-
-[node name="CompDamage" parent="RigidBody3D" instance=ExtResource("5_70seh")]
-tagetType = "summer"
-
-[node name="CollisionShape3D" parent="RigidBody3D/CompDamage/Area3D" index="0"]
-shape = SubResource("SphereShape3D_n1gvs")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
@@ -318,4 +309,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[editable path="RigidBody3D/CompDamage"]
+[node name="EnemyFangirl" parent="." instance=ExtResource("8_b1j1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8, 0.2, 3.5)
