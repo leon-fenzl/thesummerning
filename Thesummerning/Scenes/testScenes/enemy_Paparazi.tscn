@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c36d4axeluggr"]
+
+[ext_resource type="PackedScene" uid="uid://d0m2q3j1on2nm" path="res://Scenes/testScenes/EnemyBase.tscn" id="1_yg1ec"]
+[ext_resource type="Script" path="res://scripts/Joao2/EnemyPaparazi.gd" id="2_efucs"]
+
+[node name="EnemyPaparazi" instance=ExtResource("1_yg1ec")]
+
+[node name="Enemy" parent="." index="0"]
+script = ExtResource("2_efucs")
+
+[node name="NavigationAgent3D" parent="Enemy" index="2"]
+target_desired_distance = 2.0

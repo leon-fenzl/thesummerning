@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://jpdxa7rqx1sv"]
+
+[ext_resource type="PackedScene" uid="uid://d0m2q3j1on2nm" path="res://Scenes/testScenes/EnemyBase.tscn" id="1_e2wyf"]
+
+[node name="EnemyBombado" instance=ExtResource("1_e2wyf")]

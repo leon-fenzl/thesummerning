@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://borpfqsfediav"]
+
+[ext_resource type="Script" path="res://scripts/Joao2/guardacostas-base.gd" id="1_is264"]
+[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="2_r8v1l"]
+[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="3_g48e3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pwlh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wesm"]
+
+[node name="GuardaCostas" type="Node3D" groups=["summer"]]
+
+[node name="guardacostas" type="CharacterBody3D" parent="." groups=["summer"]]
+transform = Transform3D(0.273617, 0, 0, 0, 0.261059, 0, 0, 0, 0.263797, 0, 0, 0)
+script = ExtResource("1_is264")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="guardacostas"]
+mesh = SubResource("BoxMesh_pwlh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="guardacostas" groups=["summer"]]
+shape = SubResource("BoxShape3D_4wesm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="guardacostas"]
+debug_enabled = true
+debug_path_custom_color = Color(0.176471, 0, 0.776471, 1)
+
+[node name="CompDamage" parent="guardacostas" instance=ExtResource("2_r8v1l")]
+
+[node name="CompLife" parent="guardacostas" instance=ExtResource("3_g48e3")]
+
+[connection signal="target_reached" from="guardacostas/NavigationAgent3D" to="guardacostas" method="chegou"]
+
+[editable path="guardacostas/CompDamage"]

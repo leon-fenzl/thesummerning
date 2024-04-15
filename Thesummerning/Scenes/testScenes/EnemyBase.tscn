@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0m2q3j1on2nm"]
+[gd_scene load_steps=6 format=3 uid="uid://d0m2q3j1on2nm"]
 
 [ext_resource type="Script" path="res://scripts/Joao2/Enemy.gd" id="1_g872p"]
+[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="2_qpdy2"]
+[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="3_3cdqn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_me23r"]
 
@@ -8,18 +10,24 @@
 
 [node name="EnemyBase" type="Node3D"]
 
-[node name="EnemyFangirl" type="CharacterBody3D" parent="." groups=["enemy"]]
-transform = Transform3D(0.114987, 0.000114126, -0.000135918, -0.000114013, 0.114987, 9.37594e-05, 0.000136013, -9.36221e-05, 0.114987, 1.84349, 0.220525, -0.382132)
+[node name="Enemy" type="CharacterBody3D" parent="." groups=["enemy"]]
+transform = Transform3D(0.114987, 0.000114126, -0.000135918, -0.000114013, 0.114987, 9.37594e-05, 0.000136013, -9.36221e-05, 0.114987, -0.00330806, 5.96046e-08, 0.00100493)
 script = ExtResource("1_g872p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyFangirl"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
 mesh = SubResource("CapsuleMesh_me23r")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyFangirl"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy" groups=["enemy"]]
 shape = SubResource("CapsuleShape3D_p2ro5")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="EnemyFangirl"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
 path_desired_distance = 0.1
 target_desired_distance = 0.1
 
-[connection signal="target_reached" from="EnemyFangirl/NavigationAgent3D" to="EnemyFangirl" method="chegou"]
+[node name="CompDamage" parent="Enemy" instance=ExtResource("2_qpdy2")]
+
+[node name="CompLife" parent="Enemy" instance=ExtResource("3_3cdqn")]
+
+[connection signal="target_reached" from="Enemy/NavigationAgent3D" to="Enemy" method="chegou"]
+
+[editable path="Enemy/CompDamage"]

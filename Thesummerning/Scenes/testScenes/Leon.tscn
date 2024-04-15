@@ -1,14 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://dm6n4momub01u"]
+[gd_scene load_steps=17 format=3 uid="uid://dm6n4momub01u"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_xdjnf"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/CharacterScenes/player.tscn" id="2_ghe10"]
 [ext_resource type="Script" path="res://Scenes/testScenes/HUDCtrlr.gd" id="2_l4ffy"]
-[ext_resource type="PackedScene" uid="uid://djaefgpyuewy5" path="res://Scenes/CharacterScenes/TestAI.tscn" id="3_dtncv"]
-[ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
+[ext_resource type="PackedScene" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
 [ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="5_0m67v"]
 [ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="5_70seh"]
 [ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/CharacterScenes/TargetingSystem.tscn" id="5_ljnbf"]
-[ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/testScenes/spawner.tscn" id="8_vk0r3"]
+[ext_resource type="PackedScene" path="res://Scenes/testScenes/spawner.tscn" id="8_vk0r3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h4f0s"]
 radius = 1.0
@@ -190,7 +189,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
 speed = 2000.0
 jumpForce = 1000.0
 springRef = NodePath("../TargetingSystem")
-hudRef = NodePath("../UserInterface/HUD")
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -303,7 +301,6 @@ offset_bottom = 128.0
 grow_horizontal = 2
 pivot_offset = Vector2(32, 32)
 focus_mode = 1
-packedScn = ExtResource("3_dtncv")
 spawnerRef = NodePath("../../../Spawner")
 
 [node name="MenuPause" type="Control" parent="UserInterface"]

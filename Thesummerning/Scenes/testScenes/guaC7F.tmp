@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://borpfqsfediav"]
+
+[ext_resource type="Script" path="res://scripts/Joao2/guardacostas-base.gd" id="1_is264"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pwlh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4wesm"]
+
+[node name="GuardaCostas" type="Node3D"]
+
+[node name="guardacostas" type="CharacterBody3D" parent="."]
+script = ExtResource("1_is264")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="guardacostas"]
+mesh = SubResource("BoxMesh_pwlh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="guardacostas"]
+shape = SubResource("BoxShape3D_4wesm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="guardacostas"]
