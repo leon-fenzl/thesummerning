@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cn1qmjx1qdluk"
+path="res://.godot/imported/cadeira 1.obj-3ce53172fd2a3c9a7d6b7d2e416aa232.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cadeira 1.obj-3ce53172fd2a3c9a7d6b7d2e416aa232.mesh"]
+
+source_file="res://Artes/Eric/modelos 3D/cadeira 1.obj"
+dest_files=["res://.godot/imported/cadeira 1.obj-3ce53172fd2a3c9a7d6b7d2e416aa232.mesh", "res://.godot/imported/cadeira 1.obj-3ce53172fd2a3c9a7d6b7d2e416aa232.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

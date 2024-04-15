@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0auelyecrrkk"
+path="res://.godot/imported/praia-calçada.obj-6ac3ad1b090e6a4cc2cc97d769ad4523.mesh"
+
+[deps]
+
+files=["res://.godot/imported/praia-calçada.obj-6ac3ad1b090e6a4cc2cc97d769ad4523.mesh"]
+
+source_file="res://Artes/Eric/modelos 3D/praia-calçada.obj"
+dest_files=["res://.godot/imported/praia-calçada.obj-6ac3ad1b090e6a4cc2cc97d769ad4523.mesh", "res://.godot/imported/praia-calçada.obj-6ac3ad1b090e6a4cc2cc97d769ad4523.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

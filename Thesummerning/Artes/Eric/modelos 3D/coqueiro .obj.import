@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://3mfeylfd8tug"
+path="res://.godot/imported/coqueiro .obj-972c216d00378010c7eeee54bee3b0ab.mesh"
+
+[deps]
+
+files=["res://.godot/imported/coqueiro .obj-972c216d00378010c7eeee54bee3b0ab.mesh"]
+
+source_file="res://Artes/Eric/modelos 3D/coqueiro .obj"
+dest_files=["res://.godot/imported/coqueiro .obj-972c216d00378010c7eeee54bee3b0ab.mesh", "res://.godot/imported/coqueiro .obj-972c216d00378010c7eeee54bee3b0ab.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
