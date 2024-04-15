@@ -10,6 +10,9 @@ extends CharacterBody3D
 
 @onready var compLife = $CompLife
 
+@export var hudRef : NodePath
+@onready var hud = get_node(hudRef)
+
 @onready var gravityVector = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 @onready var walkInputs := Vector2.ZERO
 @onready var direction := Vector3.ZERO
@@ -60,3 +63,8 @@ func PushRbodys():
 	if col.get_collider() is RigidBody3D:
 		if is_on_wall() && col.get_collider().gravity_scale>0.5:
 			col.get_collider().apply_central_impulse(-col.get_normal()*(col.get_collider().mass))
+func FeedHUDValues():
+	if hud.index <= hud.bars.size()-1:
+		compLife.FeedLifeValue(hud.bars[hud.index].max_value)
+		hud.bars[hud.index].value = hud.bars[hud.index].max_value
+		hud.index += 1

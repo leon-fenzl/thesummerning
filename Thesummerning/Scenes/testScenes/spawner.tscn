@@ -1,25 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvq6nsxam78r0"]
+[gd_scene load_steps=4 format=3 uid="uid://cvq6nsxam78r0"]
 
 [ext_resource type="Script" path="res://scripts/Leon/SummonSpawner.gd" id="1_j8x8w"]
-[ext_resource type="Script" path="res://scripts/Leon/spawnPoint.gd" id="2_osj77"]
+[ext_resource type="PackedScene" uid="uid://3aot2hhtglv6" path="res://Scenes/GameScenes/spawn_point.tscn" id="2_5tt84"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_xeej7"]
 
 [node name="Spawner" type="Node3D" node_paths=PackedStringArray("spawnPoss")]
 script = ExtResource("1_j8x8w")
 playerRef = NodePath("../Player")
-spawnPoss = [NodePath("spawnPoint1"), NodePath("spawnPoint2"), NodePath("spawnPoint3"), NodePath("spawnPoint4")]
+spawnPoss = [NodePath("spawnPoint"), NodePath("spawnPoint2"), NodePath("spawnPoint3"), NodePath("spawnPoint4")]
 
-[node name="spawnPoint1" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2.5)
-script = ExtResource("2_osj77")
+[node name="spawnPoint" parent="." instance=ExtResource("2_5tt84")]
 
-[node name="spawnPoint2" type="Marker3D" parent="."]
+[node name="spawnPoint2" parent="." instance=ExtResource("2_5tt84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.5, 0)
-script = ExtResource("2_osj77")
 
-[node name="spawnPoint3" type="Marker3D" parent="."]
+[node name="spawnPoint3" parent="." instance=ExtResource("2_5tt84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
-script = ExtResource("2_osj77")
 
-[node name="spawnPoint4" type="Marker3D" parent="."]
+[node name="spawnPoint4" parent="." instance=ExtResource("2_5tt84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, 0)
-script = ExtResource("2_osj77")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = SubResource("PrismMesh_xeej7")
