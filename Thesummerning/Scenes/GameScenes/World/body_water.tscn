@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://qa0p41iyuuhq"]
+
+[ext_resource type="Material" uid="uid://dpj215l6is7dc" path="res://Materials/Mat_Water.tres" id="1_6jslo"]
+[ext_resource type="ArrayMesh" uid="uid://c2qwqdf1msca5" path="res://Artes/Eric/modelos 3D/praia.obj" id="2_83i1a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ipfc"]
+size = Vector3(10, 10, 10)
+
+[node name="Body_Water" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+collision_mask = 14
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.986819, -0.161828, 0, 0.161828, 0.986819, 0, -0.793162, 0)
+material_override = ExtResource("1_6jslo")
+mesh = ExtResource("2_83i1a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97605, 0)
+shape = SubResource("BoxShape3D_8ipfc")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://17jkfv6yhof5"]
+
+[ext_resource type="PackedScene" uid="uid://rvni5dq3vjyn" path="res://Scenes/GameScenes/World/obj_scene.tscn" id="1_pnhrx"]
+[ext_resource type="ArrayMesh" uid="uid://cn1qmjx1qdluk" path="res://Artes/Eric/modelos 3D/cadeira 1.obj" id="2_dt1a4"]
+[ext_resource type="Material" uid="uid://b7y2yit2l5ss8" path="res://Materials/Mat_Cadeira.tres" id="2_xhog1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r88ky"]
+size = Vector3(0.4, 0.8, 0.6)
+
+[node name="ObjScene" instance=ExtResource("1_pnhrx")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+material_override = ExtResource("2_xhog1")
+mesh = ExtResource("2_dt1a4")
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, 0.4, -0.1)
+shape = SubResource("BoxShape3D_r88ky")

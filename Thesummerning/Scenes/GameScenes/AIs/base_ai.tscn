@@ -1,19 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyvqjexn64llj"]
+[gd_scene load_steps=5 format=3 uid="uid://cyvqjexn64llj"]
 
 [ext_resource type="Script" path="res://scripts/Leon/BaseAIStats.gd" id="1_nss5n"]
 [ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="2_if4b2"]
 [ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="3_vk46n"]
 [ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="4_x20re"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1kcdr"]
-
 [node name="BaseAI" type="CharacterBody3D"]
 script = ExtResource("1_nss5n")
-SPEED = null
-LIFE = null
+baseType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_1kcdr")
 
 [node name="CompLife" parent="." instance=ExtResource("2_if4b2")]
 
@@ -23,3 +19,9 @@ shape = SubResource("CapsuleShape3D_1kcdr")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture = ExtResource("4_x20re")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

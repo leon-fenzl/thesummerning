@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c60rpk87fisyu"]
+
+[ext_resource type="PackedScene" uid="uid://cyvqjexn64llj" path="res://Scenes/GameScenes/AIs/base_ai.tscn" id="1_1yxn6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e6ydl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cbd0r"]
+radius = 1.1
+
+[node name="BaseAI" instance=ExtResource("1_1yxn6")]
+SPEED = 100.0
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_e6ydl")
+
+[node name="CollisionShape3D" parent="CompDamage/Area3D" index="0"]
+shape = SubResource("SphereShape3D_cbd0r")
+
+[editable path="CompDamage"]
