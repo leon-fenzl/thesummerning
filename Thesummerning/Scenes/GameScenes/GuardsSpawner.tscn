@@ -5,7 +5,7 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_xeej7"]
 
-[node name="Spawner" type="Node3D" node_paths=PackedStringArray("spawnPoss")]
+[node name="GuardsSpawner" type="Node3D" node_paths=PackedStringArray("spawnPoss")]
 script = ExtResource("1_j8x8w")
 playerRef = NodePath("../Player")
 spawnPoss = [NodePath("spawnPoint"), NodePath("spawnPoint2"), NodePath("spawnPoint3"), NodePath("spawnPoint4")]

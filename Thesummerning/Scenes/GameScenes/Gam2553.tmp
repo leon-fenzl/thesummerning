@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dguv8d1pggt4e"]
+[gd_scene load_steps=19 format=3 uid="uid://dguv8d1pggt4e"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_5jjba"]
 [ext_resource type="Script" path="res://scripts/Leon/HUDCtrlr.gd" id="2_6ebfe"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/GameScenes/GuardsSpawner.tscn" id="6_gg03c"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/GameScenes/player.tscn" id="7_astvu"]
 [ext_resource type="Material" uid="uid://dpj215l6is7dc" path="res://Materials/Mat_Water.tres" id="7_kvny0"]
-[ext_resource type="Script" path="res://scripts/Leon/MobSpawner.gd" id="11_lj3n8"]
-[ext_resource type="PackedScene" uid="uid://c60rpk87fisyu" path="res://Scenes/GameScenes/Mob_FanGirl.tscn" id="12_jxx48"]
+[ext_resource type="PackedScene" uid="uid://cyvqjexn64llj" path="res://Scenes/GameScenes/base_ai.tscn" id="9_itmaf"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/MobSpawner.gd" id="11_lj3n8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8hrv"]
 
@@ -30,9 +30,6 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fdbhk"]
 size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8ipfc"]
-size = Vector3(10, 10, 10)
 
 [node name="Game" type="Node"]
 
@@ -192,6 +189,7 @@ collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("5_nt7c8")
 mesh = ExtResource("5_ixpt0")
 
@@ -205,6 +203,7 @@ collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("5_nt7c8")
 mesh = ExtResource("5_ixpt0")
 
@@ -218,6 +217,7 @@ collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("5_nt7c8")
 mesh = ExtResource("5_ixpt0")
 
@@ -231,6 +231,7 @@ collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("5_nt7c8")
 mesh = ExtResource("5_ixpt0")
 
@@ -244,6 +245,7 @@ collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("5_nt7c8")
 mesh = ExtResource("5_ixpt0")
 
@@ -257,6 +259,7 @@ collision_mask = 14
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("5_nt7c8")
 mesh = ExtResource("5_ixpt0")
 
@@ -275,8 +278,8 @@ material_override = ExtResource("7_kvny0")
 mesh = ExtResource("5_ixpt0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97605, 0)
-shape = SubResource("BoxShape3D_8ipfc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_fdbhk")
 
 [node name="StaticBody3D8" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0052, 0, 10)
@@ -289,8 +292,8 @@ material_override = ExtResource("7_kvny0")
 mesh = ExtResource("5_ixpt0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97605, 0)
-shape = SubResource("BoxShape3D_8ipfc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_fdbhk")
 
 [node name="StaticBody3D9" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
@@ -303,11 +306,10 @@ material_override = ExtResource("7_kvny0")
 mesh = ExtResource("5_ixpt0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.97605, 0)
-shape = SubResource("BoxShape3D_8ipfc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_fdbhk")
 
 [node name="TargetingSystem" parent="." instance=ExtResource("5_xjkg3")]
-collision_mask = 0
 playerRef = NodePath("../Player")
 
 [node name="GuardsSpawner" parent="." node_paths=PackedStringArray("spawnPoss") instance=ExtResource("6_gg03c")]
@@ -319,12 +321,7 @@ speed = 2000.0
 jumpForce = 1000.0
 springRef = NodePath("../TargetingSystem")
 
+[node name="BaseAI" parent="." instance=ExtResource("9_itmaf")]
+
 [node name="MobSpawner" type="Node3D" parent="."]
 script = ExtResource("11_lj3n8")
-mobScenes = Array[PackedScene]([ExtResource("12_jxx48")])
-
-[node name="Timer" type="Timer" parent="MobSpawner"]
-wait_time = 30.0
-autostart = true
-
-[connection signal="timeout" from="MobSpawner/Timer" to="MobSpawner" method="_on_timer_timeout"]

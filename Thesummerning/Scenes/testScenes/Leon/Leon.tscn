@@ -1,13 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://dm6n4momub01u"]
+[gd_scene load_steps=15 format=3 uid="uid://dm6n4momub01u"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_xdjnf"]
-[ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/CharacterScenes/player.tscn" id="2_ghe10"]
-[ext_resource type="Script" path="res://Scenes/testScenes/HUDCtrlr.gd" id="2_l4ffy"]
-[ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/btt_summonning.tscn" id="3_gyr2i"]
+[ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/GameScenes/player.tscn" id="2_ghe10"]
+[ext_resource type="Script" path="res://scripts/Leon/HUDCtrlr.gd" id="2_l4ffy"]
+[ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/Leon/btt_summonning.tscn" id="3_gyr2i"]
 [ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="5_0m67v"]
-[ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/CharacterScenes/TargetingSystem.tscn" id="5_ljnbf"]
-[ext_resource type="PackedScene" uid="uid://ckv4jmcomuqy" path="res://Scenes/testScenes/enemy_FanGirlTest.tscn" id="8_b1j1j"]
-[ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/testScenes/spawner.tscn" id="8_vk0r3"]
+[ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/GameScenes/TargetingSystem.tscn" id="5_ljnbf"]
+[ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/GameScenes/GuardsSpawner.tscn" id="8_vk0r3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hnk15"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ruxw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h4f0s"]
 radius = 1.0
@@ -26,15 +29,139 @@ size = Vector3(10, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_s25oe"]
 size = Vector3(10, 1, 10)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hnk15"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ruxw"]
-
 [node name="Game" type="Node"]
 
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("1_xdjnf")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HUD" type="Control" parent="UserInterface" node_paths=PackedStringArray("bars")]
+process_mode = 3
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 1
+anchor_right = 32.0
+anchor_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_l4ffy")
+bars = [NodePath("TextureProgressBar"), NodePath("TextureProgressBar2"), NodePath("TextureProgressBar3"), NodePath("TextureProgressBar4")]
+
+[node name="ProgressBar3" type="ProgressBar" parent="UserInterface/HUD"]
+layout_mode = 1
+offset_left = 192.0
+offset_top = 88.0
+offset_right = 224.0
+offset_bottom = 188.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxTexture_hnk15")
+theme_override_styles/fill = SubResource("StyleBoxTexture_6ruxw")
+max_value = 10.0
+step = 0.2
+value = 10.0
+fill_mode = 3
+show_percentage = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UserInterface/HUD"]
+custom_minimum_size = Vector2(32, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -576.0
+offset_top = 64.0
+offset_right = -448.0
+offset_bottom = 192.0
+grow_horizontal = 2
+fill_mode = 3
+texture_under = ExtResource("5_0m67v")
+texture_progress = ExtResource("5_0m67v")
+tint_under = Color(0, 0, 0, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="UserInterface/HUD"]
+custom_minimum_size = Vector2(32, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -448.0
+offset_top = 64.0
+offset_right = -320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+fill_mode = 3
+texture_under = ExtResource("5_0m67v")
+texture_progress = ExtResource("5_0m67v")
+tint_under = Color(0, 0, 0, 1)
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="UserInterface/HUD"]
+custom_minimum_size = Vector2(32, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 64.0
+offset_right = -192.0
+offset_bottom = 192.0
+grow_horizontal = 2
+fill_mode = 3
+texture_under = ExtResource("5_0m67v")
+texture_progress = ExtResource("5_0m67v")
+tint_under = Color(0, 0, 0, 1)
+
+[node name="TextureProgressBar4" type="TextureProgressBar" parent="UserInterface/HUD"]
+custom_minimum_size = Vector2(32, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 192.0
+grow_horizontal = 2
+fill_mode = 3
+texture_under = ExtResource("5_0m67v")
+texture_progress = ExtResource("5_0m67v")
+tint_under = Color(0, 0, 0, 1)
+
+[node name="Btt_Summonning" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 64.0
+offset_right = 16.0
+offset_bottom = 128.0
+grow_horizontal = 2
+pivot_offset = Vector2(32, 32)
+focus_mode = 1
+spawnerRef = NodePath("../../../Spawner")
+
+[node name="MenuPause" type="Control" parent="UserInterface"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/MenuPause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
@@ -181,133 +308,4 @@ speed = 2000.0
 jumpForce = 1000.0
 springRef = NodePath("../TargetingSystem")
 
-[node name="UserInterface" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HUD" type="Control" parent="UserInterface" node_paths=PackedStringArray("bars")]
-process_mode = 3
-custom_minimum_size = Vector2(1280, 720)
-layout_mode = 1
-anchor_right = 32.0
-anchor_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("2_l4ffy")
-bars = [NodePath("TextureProgressBar"), NodePath("TextureProgressBar2"), NodePath("TextureProgressBar3"), NodePath("TextureProgressBar4")]
-
-[node name="ProgressBar3" type="ProgressBar" parent="UserInterface/HUD"]
-layout_mode = 1
-offset_left = 192.0
-offset_top = 88.0
-offset_right = 224.0
-offset_bottom = 188.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/background = SubResource("StyleBoxTexture_hnk15")
-theme_override_styles/fill = SubResource("StyleBoxTexture_6ruxw")
-max_value = 10.0
-step = 0.2
-value = 10.0
-fill_mode = 3
-show_percentage = false
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -576.0
-offset_top = 64.0
-offset_right = -448.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("5_0m67v")
-texture_progress = ExtResource("5_0m67v")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -448.0
-offset_top = 64.0
-offset_right = -320.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("5_0m67v")
-texture_progress = ExtResource("5_0m67v")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -320.0
-offset_top = 64.0
-offset_right = -192.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("5_0m67v")
-texture_progress = ExtResource("5_0m67v")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="TextureProgressBar4" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = 64.0
-offset_right = -64.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("5_0m67v")
-texture_progress = ExtResource("5_0m67v")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="Btt_Summonning" parent="UserInterface/HUD" instance=ExtResource("3_gyr2i")]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_top = 64.0
-offset_right = 16.0
-offset_bottom = 128.0
-grow_horizontal = 2
-pivot_offset = Vector2(32, 32)
-focus_mode = 1
-spawnerRef = NodePath("../../../Spawner")
-
-[node name="MenuPause" type="Control" parent="UserInterface"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="ColorRect" type="ColorRect" parent="UserInterface/MenuPause"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="EnemyFangirl" parent="." instance=ExtResource("8_b1j1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8, 0.2, 3.5)
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
