@@ -1,8 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://borpfqsfediav"]
 
 [ext_resource type="Script" path="res://scripts/Joao2/guardacostas-base.gd" id="1_is264"]
-[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="2_r8v1l"]
-[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="3_g48e3"]
+
 
 [sub_resource type="BoxMesh" id="BoxMesh_pwlh0"]
 
@@ -30,4 +29,4 @@ debug_path_custom_color = Color(0.176471, 0, 0.776471, 1)
 
 [connection signal="target_reached" from="guardacostas/NavigationAgent3D" to="guardacostas" method="chegou"]
 
-[editable path="guardacostas/CompDamage"]
+

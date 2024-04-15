@@ -24,10 +24,8 @@ shape = SubResource("CapsuleShape3D_p2ro5")
 path_desired_distance = 0.1
 target_desired_distance = 0.1
 
-[node name="CompDamage" parent="Enemy" instance=ExtResource("2_qpdy2")]
 
-[node name="CompLife" parent="Enemy" instance=ExtResource("3_3cdqn")]
 
 [connection signal="target_reached" from="Enemy/NavigationAgent3D" to="Enemy" method="chegou"]
 
-[editable path="Enemy/CompDamage"]
+
