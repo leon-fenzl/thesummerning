@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://btry4v10t56nn"
+path="res://.godot/imported/caixa de isopor.obj-1ae38d5d084cffe05af39bcfaeb74246.mesh"
+
+[deps]
+
+files=["res://.godot/imported/caixa de isopor.obj-1ae38d5d084cffe05af39bcfaeb74246.mesh"]
+
+source_file="res://Artes/Eric/modelos 3D/caixa de isopor.obj"
+dest_files=["res://.godot/imported/caixa de isopor.obj-1ae38d5d084cffe05af39bcfaeb74246.mesh", "res://.godot/imported/caixa de isopor.obj-1ae38d5d084cffe05af39bcfaeb74246.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
