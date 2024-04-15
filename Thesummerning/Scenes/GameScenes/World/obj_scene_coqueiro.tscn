@@ -1,5 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7egoarjxmer7"]
+[gd_scene load_steps=5 format=3 uid="uid://c7egoarjxmer7"]
 
 [ext_resource type="PackedScene" uid="uid://rvni5dq3vjyn" path="res://Scenes/GameScenes/World/obj_scene.tscn" id="1_dl1aq"]
+[ext_resource type="Material" uid="uid://xa7uu4bmfl2p" path="res://Materials/Mat_Coqueiro.tres" id="2_krwqn"]
+[ext_resource type="ArrayMesh" uid="uid://3mfeylfd8tug" path="res://Artes/Eric/modelos 3D/coqueiro .obj" id="3_ba0b2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_whygr"]
+size = Vector3(0.5, 1, 0.5)
 
 [node name="ObjScene" instance=ExtResource("1_dl1aq")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+material_override = ExtResource("2_krwqn")
+mesh = ExtResource("3_ba0b2")
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_whygr")

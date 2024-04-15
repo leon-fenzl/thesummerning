@@ -1,5 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cthhsfhhwganm"]
+[gd_scene load_steps=3 format=3 uid="uid://cthhsfhhwganm"]
 
 [ext_resource type="PackedScene" uid="uid://rvni5dq3vjyn" path="res://Scenes/GameScenes/World/obj_scene.tscn" id="1_nsoeo"]
+[ext_resource type="ArrayMesh" uid="uid://ejpw6dif8n8l" path="res://Artes/Eric/modelos 3D/calçada.obj" id="2_xtxkj"]
 
 [node name="ObjScene" instance=ExtResource("1_nsoeo")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = ExtResource("2_xtxkj")
+
+[node name="NavigationObstacle3D" parent="." index="2"]
+visible = false

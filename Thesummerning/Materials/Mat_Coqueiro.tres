@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://xa7uu4bmfl2p"]
+
+[ext_resource type="Texture2D" uid="uid://cqmohrefjclje" path="res://Artes/Eric/texturas/coqueiro e recliner.jpg" id="1_hs8ax"]
+
+[resource]
+albedo_texture = ExtResource("1_hs8ax")
+albedo_texture_force_srgb = true
