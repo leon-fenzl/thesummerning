@@ -16,7 +16,7 @@ dest_files=["res://.godot/imported/calçada.obj-18befc543f0395f71bba707398897c09
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3(1, 1, 1)
+scale_mesh=Vector3(2.5, 1, 2.5)
 offset_mesh=Vector3(0, 0, 0)
 optimize_mesh=true
 force_disable_mesh_compression=false

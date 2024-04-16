@@ -27,7 +27,7 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hislj"]
-vertices = PackedVector3Array(-44.2872, 0.5, -14.4468, -44.2872, 0.5, 4.5532, 44.2128, 0.5, 4.5532, 44.2128, 0.5, -14.4468)
+vertices = PackedVector3Array(-44.2872, 0.5, -24.3936, -44.2872, 0.5, 4.60643, 44.4628, 0.5, 4.60643, 44.4628, 0.5, -24.3936)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Game" type="Node"]
@@ -104,7 +104,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(32, 32)
 focus_mode = 1
 packedScn = ExtResource("5_njvjy")
-spawnerRef = NodePath("../../../GuardsSpawner")
+spawnerRef = NodePath("../../../Spawner_Guards")
 
 [node name="MenuPause" type="Control" parent="UserInterface"]
 visible = false
@@ -166,59 +166,61 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40, 0, 9.95
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_hislj")
 
-[node name="Body_Sand" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7872, 0, 0)
+[node name="Sand" type="Node" parent="NavigationRegion3D"]
 
-[node name="Body_Sand2" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8404, 0, 0)
+[node name="Body_Sand" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -40, 0, 0)
 
-[node name="Body_Sand3" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8936, 0, 0)
+[node name="Body_Sand2" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -30, 0, 0)
 
-[node name="Body_Sand4" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.84734, 0, 0)
+[node name="Body_Sand3" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -20, 0, 0)
 
-[node name="Body_Sand5" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0994604, 0, 0)
+[node name="Body_Sand4" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -9.90002, 0, 0)
 
-[node name="Body_Sand6" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0463, 0, 0)
+[node name="Body_Sand5" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0.0999925, 0, 0)
 
-[node name="Body_Sand7" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0925, 0, 0)
+[node name="Body_Sand6" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 10.1, 0, 0)
 
-[node name="Body_Sand8" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0393, 0, 0)
+[node name="Body_Sand7" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 20.2, 0, 0)
 
-[node name="Body_Sand9" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9861, 0, 0)
+[node name="Body_Sand8" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.2, 0, 0)
 
-[node name="Body_Sand10" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7872, 0, -9.94679)
+[node name="Body_Sand9" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2, 0, 0)
 
-[node name="Body_Sand11" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8404, 0, -9.94679)
+[node name="Body_Sand10" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -40, 0, -10)
 
-[node name="Body_Sand12" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8936, 0, -9.94679)
+[node name="Body_Sand11" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -30, 0, -10)
 
-[node name="Body_Sand13" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.84734, 0, -9.94679)
+[node name="Body_Sand12" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -20, 0, -10)
 
-[node name="Body_Sand14" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0994604, 0, -9.94679)
+[node name="Body_Sand13" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -9.90002, 0, -10)
 
-[node name="Body_Sand15" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0463, 0, -9.94679)
+[node name="Body_Sand14" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0.0999926, 0, -10)
 
-[node name="Body_Sand16" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0925, 0, -9.94679)
+[node name="Body_Sand15" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 10.1, 0, -10)
 
-[node name="Body_Sand17" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0393, 0, -9.94679)
+[node name="Body_Sand16" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 20.2, 0, -10)
 
-[node name="Body_Sand18" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9861, 0, -9.94679)
+[node name="Body_Sand17" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.2, 0, -10)
+
+[node name="Body_Sand18" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2, 0, -10)
 
 [node name="Body_Street" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7872, 0, -19.8936)
@@ -245,7 +247,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2914, 0, -19.8936)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3377, 0, -19.8936)
 
 [node name="Body_Street9" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3839, 0, -19.8936)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0397, 0, -19.8936)
 
 [node name="ObjScene" parent="NavigationRegion3D" instance=ExtResource("7_qgg0w")]
 
@@ -253,14 +255,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3839, 0, -19.8936)
 collision_mask = 0
 playerRef = NodePath("../Player")
 
-[node name="GuardsSpawner" parent="." instance=ExtResource("6_gg03c")]
-
 [node name="Player" parent="." groups=["summer"] instance=ExtResource("7_astvu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
 speed = 2000.0
 jumpForce = 1000.0
 springRef = NodePath("../TargetingSystem")
 hudRef = NodePath("../UserInterface/HUD")
+
+[node name="Spawner_Guards" parent="." instance=ExtResource("6_gg03c")]
 
 [node name="Spawner_Mobs" parent="." instance=ExtResource("11_2yss6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2129, 0, 0)
