@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ch3tk2sb6snut"]
+
+[ext_resource type="Texture2D" uid="uid://c7e8okhwlqy5a" path="res://Artes/Eric/modelos 3D/botões.png" id="1_g4e5y"]
+
+[resource]
+atlas = ExtResource("1_g4e5y")

@@ -242,33 +242,33 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.2, 0, -1
 [node name="Body_Sand18" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2, 0, -10)
 
-[node name="Node" type="Node" parent="NavigationRegion3D"]
+[node name="Street" type="Node" parent="NavigationRegion3D"]
 
-[node name="Body_Street" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -40.0001, 0, -20)
 
-[node name="Body_Street2" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street2" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -29.9, 0, -20)
 
-[node name="Body_Street3" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street3" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -19.8001, 0, -20)
 
-[node name="Body_Street4" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street4" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -9.80001, 0, -20)
 
-[node name="Body_Street5" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street5" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0.299972, 0, -20)
 
-[node name="Body_Street6" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street6" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 10.3999, 0, -20)
 
-[node name="Body_Street7" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street7" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 20.4, 0, -20)
 
-[node name="Body_Street8" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street8" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.5, 0, -20)
 
-[node name="Body_Street9" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+[node name="Body_Street9" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2539, 0, -20)
 
 [node name="TargetingSystem" parent="." instance=ExtResource("5_xjkg3")]
@@ -285,6 +285,6 @@ hudRef = NodePath("../UserInterface/HUD")
 [node name="Spawner_Guards" parent="." instance=ExtResource("6_gg03c")]
 
 [node name="Spawner_Mobs" parent="." instance=ExtResource("11_2yss6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2129, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.228, 0, -7.22682)
 mobScenes = Array[PackedScene]([ExtResource("12_jxx48"), null, null, null])
 playerRef = NodePath("../Player")
