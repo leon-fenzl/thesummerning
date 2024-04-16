@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dguv8d1pggt4e"]
+[gd_scene load_steps=22 format=3 uid="uid://dguv8d1pggt4e"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_5jjba"]
 [ext_resource type="Script" path="res://scripts/Leon/HUDCtrlr.gd" id="2_6ebfe"]
@@ -25,6 +25,12 @@ radius = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_y500n"]
 radius = 1.0
 height = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mj35f"]
+size = Vector3(92, 10, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rc7fl"]
+size = Vector3(1, 10, 30.7)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hislj"]
 vertices = PackedVector3Array(-44.2872, 0.5, -24.3936, -44.2872, 0.5, 4.60643, 44.4628, 0.5, 4.60643, 44.4628, 0.5, -24.3936)
@@ -162,6 +168,20 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30, 0, 9.95
 [node name="Body_Water9" parent="." instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40, 0, 9.95351)
 
+[node name="InvisiWalls" parent="." instance=ExtResource("7_qgg0w")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="InvisiWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.97073, -25)
+shape = SubResource("BoxShape3D_mj35f")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="InvisiWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.7, 4.87073, -10.1)
+shape = SubResource("BoxShape3D_rc7fl")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="InvisiWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 4.87073, -10.1)
+shape = SubResource("BoxShape3D_rc7fl")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_hislj")
@@ -222,34 +242,34 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.2, 0, -1
 [node name="Body_Sand18" parent="NavigationRegion3D/Sand" instance=ExtResource("5_jhmwv")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2, 0, -10)
 
-[node name="Body_Street" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7872, 0, -19.8936)
+[node name="Node" type="Node" parent="NavigationRegion3D"]
 
-[node name="Body_Street2" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7409, 0, -19.8936)
+[node name="Body_Street" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -40.0001, 0, -20)
 
-[node name="Body_Street3" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6947, 0, -19.8936)
+[node name="Body_Street2" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -29.9, 0, -20)
 
-[node name="Body_Street4" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74786, 0, -19.8936)
+[node name="Body_Street3" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -19.8001, 0, -20)
 
-[node name="Body_Street5" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.298376, 0, -19.8936)
+[node name="Body_Street4" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -9.80001, 0, -20)
 
-[node name="Body_Street6" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3446, 0, -19.8936)
+[node name="Body_Street5" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 0.299972, 0, -20)
 
-[node name="Body_Street7" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2914, 0, -19.8936)
+[node name="Body_Street6" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 10.3999, 0, -20)
 
-[node name="Body_Street8" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3377, 0, -19.8936)
+[node name="Body_Street7" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 20.4, 0, -20)
 
-[node name="Body_Street9" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0397, 0, -19.8936)
+[node name="Body_Street8" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.5, 0, -20)
 
-[node name="ObjScene" parent="NavigationRegion3D" instance=ExtResource("7_qgg0w")]
+[node name="Body_Street9" parent="NavigationRegion3D/Node" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2539, 0, -20)
 
 [node name="TargetingSystem" parent="." instance=ExtResource("5_xjkg3")]
 collision_mask = 0
