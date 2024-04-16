@@ -17,6 +17,7 @@ func SpawnAlly(sceneType: PackedScene):
 		spawnScene.global_position = Vector3(spawnPoss[index].global_position.x, 1, spawnPoss[index].global_position.z)
 		spawnScene.set_as_top_level(true)
 		spawnScene.visible = true
+		spawnScene.target = spawnPoss[index]
 		spawnPoss[index].occupied = true
 		index += 1
 	else:

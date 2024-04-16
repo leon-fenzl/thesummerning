@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da43mxsxgxhfr"
-path="res://.godot/imported/UI RESIZED.png-e2c55fc896b5a640ca56047326c73f51.ctex"
+uid="uid://cukh4m2nr2hpv"
+path="res://.godot/imported/coqueiro e recliner.png-c5f4d68f8c50a236f705e8188906b61a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artes/Eric/Ui/UI RESIZED.png"
-dest_files=["res://.godot/imported/UI RESIZED.png-e2c55fc896b5a640ca56047326c73f51.ctex"]
+source_file="res://Artes/Eric/texturas/coqueiro e recliner.png"
+dest_files=["res://.godot/imported/coqueiro e recliner.png-c5f4d68f8c50a236f705e8188906b61a.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

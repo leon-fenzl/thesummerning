@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dud2p4acp3rdk"]
+
+[ext_resource type="PackedScene" uid="uid://cyvqjexn64llj" path="res://Scenes/GameScenes/AIs/base_ai.tscn" id="1_hm1bn"]
+
+[node name="BaseAI" instance=ExtResource("1_hm1bn")]

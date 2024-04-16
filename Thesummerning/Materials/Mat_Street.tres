@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b6u13htg18fyu"]
+
+[ext_resource type="Texture2D" uid="uid://kie4flulc5lg" path="res://Artes/Eric/texturas/beach final.jpg" id="1_yamia"]
+
+[resource]
+albedo_texture = ExtResource("1_yamia")

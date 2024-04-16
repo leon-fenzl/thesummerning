@@ -1,13 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://dguv8d1pggt4e"]
+[gd_scene load_steps=20 format=3 uid="uid://dguv8d1pggt4e"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_5jjba"]
 [ext_resource type="Script" path="res://scripts/Leon/HUDCtrlr.gd" id="2_6ebfe"]
-[ext_resource type="Texture2D" uid="uid://c307m75sql6g5" path="res://icon.svg" id="3_yaud4"]
+[ext_resource type="Texture2D" uid="uid://c1va0hpgke1yi" path="res://Artes/Eric/Ui/new_atlas_texture.tres" id="3_c22pq"]
 [ext_resource type="PackedScene" uid="uid://c6jtp7mcfnajo" path="res://Scenes/testScenes/Leon/btt_summonning.tscn" id="4_j76t0"]
 [ext_resource type="PackedScene" uid="uid://2k11us8nl5d8" path="res://Scenes/GameScenes/World/body_sand.tscn" id="5_jhmwv"]
+[ext_resource type="PackedScene" uid="uid://dud2p4acp3rdk" path="res://Scenes/GameScenes/AIs/Guard.tscn" id="5_njvjy"]
 [ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/GameScenes/Player/TargetingSystem.tscn" id="5_xjkg3"]
 [ext_resource type="PackedScene" uid="uid://qa0p41iyuuhq" path="res://Scenes/GameScenes/World/body_water.tscn" id="6_0srl6"]
 [ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/GameScenes/Player/Spawner_Guards.tscn" id="6_gg03c"]
+[ext_resource type="PackedScene" uid="uid://b50miitt05n3o" path="res://Scenes/GameScenes/World/body_street.tscn" id="7_ag06k"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/GameScenes/Player/player.tscn" id="7_astvu"]
 [ext_resource type="PackedScene" uid="uid://rvni5dq3vjyn" path="res://Scenes/GameScenes/World/obj_scene.tscn" id="7_qgg0w"]
 [ext_resource type="PackedScene" uid="uid://b73s335spxtpx" path="res://Scenes/GameScenes/AIs/Spawner_Mobs.tscn" id="11_2yss6"]
@@ -75,63 +77,18 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -576.0
-offset_top = 64.0
-offset_right = -448.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("3_yaud4")
-texture_progress = ExtResource("3_yaud4")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -448.0
-offset_top = 64.0
-offset_right = -320.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("3_yaud4")
-texture_progress = ExtResource("3_yaud4")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
 offset_left = -320.0
 offset_top = 64.0
-offset_right = -192.0
-offset_bottom = 192.0
+offset_right = -287.0
+offset_bottom = 164.0
 grow_horizontal = 2
+max_value = 10.0
+value = 9.0
 fill_mode = 3
-texture_under = ExtResource("3_yaud4")
-texture_progress = ExtResource("3_yaud4")
-tint_under = Color(0, 0, 0, 1)
-
-[node name="TextureProgressBar4" type="TextureProgressBar" parent="UserInterface/HUD"]
-custom_minimum_size = Vector2(32, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = 64.0
-offset_right = -64.0
-offset_bottom = 192.0
-grow_horizontal = 2
-fill_mode = 3
-texture_under = ExtResource("3_yaud4")
-texture_progress = ExtResource("3_yaud4")
-tint_under = Color(0, 0, 0, 1)
+texture_under = ExtResource("3_c22pq")
+texture_progress = ExtResource("3_c22pq")
+tint_under = Color(0.47451, 0.47451, 0.466667, 1)
+tint_progress = Color(1, 1, 0, 1)
 
 [node name="Btt_Summonning" parent="UserInterface/HUD" instance=ExtResource("4_j76t0")]
 custom_minimum_size = Vector2(64, 64)
@@ -146,6 +103,7 @@ offset_bottom = 128.0
 grow_horizontal = 2
 pivot_offset = Vector2(32, 32)
 focus_mode = 1
+packedScn = ExtResource("5_njvjy")
 spawnerRef = NodePath("../../../GuardsSpawner")
 
 [node name="MenuPause" type="Control" parent="UserInterface"]
@@ -262,32 +220,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0393, 0, -9.94679)
 [node name="Body_Sand18" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9861, 0, -9.94679)
 
-[node name="Body_Sand19" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
+[node name="Body_Street" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7872, 0, -19.8936)
 
-[node name="Body_Sand20" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8404, 0, -19.8936)
+[node name="Body_Street2" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.7409, 0, -19.8936)
 
-[node name="Body_Sand21" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8936, 0, -19.8936)
+[node name="Body_Street3" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6947, 0, -19.8936)
 
-[node name="Body_Sand22" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.84734, 0, -19.8936)
+[node name="Body_Street4" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.74786, 0, -19.8936)
 
-[node name="Body_Sand23" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0994605, 0, -19.8936)
+[node name="Body_Street5" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.298376, 0, -19.8936)
 
-[node name="Body_Sand24" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0463, 0, -19.8936)
+[node name="Body_Street6" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3446, 0, -19.8936)
 
-[node name="Body_Sand25" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0925, 0, -19.8936)
+[node name="Body_Street7" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2914, 0, -19.8936)
 
-[node name="Body_Sand26" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0393, 0, -19.8936)
+[node name="Body_Street8" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3377, 0, -19.8936)
 
-[node name="Body_Sand27" parent="NavigationRegion3D" instance=ExtResource("5_jhmwv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9861, 0, -19.8936)
+[node name="Body_Street9" parent="NavigationRegion3D" instance=ExtResource("7_ag06k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3839, 0, -19.8936)
 
 [node name="ObjScene" parent="NavigationRegion3D" instance=ExtResource("7_qgg0w")]
 
@@ -295,8 +253,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9861, 0, -19.8936)
 collision_mask = 0
 playerRef = NodePath("../Player")
 
-[node name="GuardsSpawner" parent="." node_paths=PackedStringArray("spawnPoss") instance=ExtResource("6_gg03c")]
-spawnPoss = [null, null, null, null]
+[node name="GuardsSpawner" parent="." instance=ExtResource("6_gg03c")]
 
 [node name="Player" parent="." groups=["summer"] instance=ExtResource("7_astvu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
