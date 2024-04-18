@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://qyoxoxjlp330"]
+
+[ext_resource type="Texture2D" uid="uid://dolkfyibry10j" path="res://Artes/Knut Sprites/Knut_Vei_bebeado.png" id="1_re2qv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybcm5"]
+atlas = ExtResource("1_re2qv")
+region = Rect2(0, 0, 494, 674)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ad8k"]
+atlas = ExtResource("1_re2qv")
+region = Rect2(494, 0, 494, 674)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fevvb"]
+atlas = ExtResource("1_re2qv")
+region = Rect2(988, 0, 494, 674)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70had"]
+atlas = ExtResource("1_re2qv")
+region = Rect2(1482, 0, 494, 674)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwhqv"]
+atlas = ExtResource("1_re2qv")
+region = Rect2(0, 674, 494, 674)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcwnm"]
+atlas = ExtResource("1_re2qv")
+region = Rect2(494, 674, 494, 674)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybcm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ad8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fevvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70had")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwhqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcwnm")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]

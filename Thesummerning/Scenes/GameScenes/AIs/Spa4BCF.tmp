@@ -6,10 +6,11 @@
 
 [node name="Spawner_Mobs" type="Node3D"]
 script = ExtResource("1_a3lx3")
-startTimer = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 1.5, 0)
 mesh = SubResource("PrismMesh_qg4u6")
-
-[connection signal="spawn" from="." to="." method="_on_spawn"]

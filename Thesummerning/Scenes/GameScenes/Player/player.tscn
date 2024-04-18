@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b2kucrvl6bwwk"]
 
 [ext_resource type="Script" path="res://scripts/Leon/Player.gd" id="1_q3nlc"]
-[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="2_7ag0n"]
+[ext_resource type="SpriteFrames" uid="uid://b147xw1o60amk" path="res://Scenes/GameScenes/Animators/Summer_Sheet.tres" id="2_82wy0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ay1u5"]
 
@@ -16,7 +16,7 @@ script/source = "extends Node
 "
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01614, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98386, 0)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_q3nlc")
@@ -24,9 +24,13 @@ jumpForce = 500.0
 mouseSpeed = 0.25
 metadata/_edit_group_ = true
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0)
+sprite_frames = ExtResource("2_82wy0")
+animation = &"run"
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_ay1u5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2"]
@@ -39,5 +43,3 @@ shape = SubResource("CapsuleShape3D_yn1ts")
 
 [node name="SummoningSystem" type="Node" parent="."]
 script = SubResource("GDScript_w6c3s")
-
-[node name="CompLife" parent="." instance=ExtResource("2_7ag0n")]

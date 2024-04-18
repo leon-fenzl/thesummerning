@@ -8,11 +8,9 @@ extends CharacterBody3D
 @export var springRef : NodePath
 @onready var spring = get_node(springRef)
 
-@onready var compLife = $CompLife
-
 @export var hudRef : NodePath
 @onready var hud = get_node(hudRef)
-
+@onready var anim := $AnimatedSprite3D
 @onready var gravityVector = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 @onready var walkInputs := Vector2.ZERO
 @onready var direction := Vector3.ZERO
@@ -27,6 +25,7 @@ func _physics_process(delta):
 	LookAtSystem()
 	Walk(delta)
 	GetCollisions()
+	AnimatorController()
 	velocity = direction + fallDirection
 	move_and_slide()
 func GravitySystem(DELTA:float):
@@ -41,11 +40,19 @@ func LookAtSystem():
 		if(direction.length()!=0):
 			$MeshInstance3D2.look_at(position+direction)
 func Walk(DELTA:float):
-	walkInputs = Input.get_vector("left","right","forward","back")
+	walkInputs = Input.get_vector("left","right","forward","back").normalized()
 	direction = Vector3(walkInputs.x,0,walkInputs.y).normalized()
 	direction = direction.rotated(Vector3.UP,spring.rotation.y).normalized()
 	direction.x = lerp(direction.x,direction.x*speed*DELTA,10*DELTA)
 	direction.z = lerp(direction.z,direction.z*speed*DELTA,10*DELTA)
+func AnimatorController():
+	if walkInputs.x > 0.2 :
+		anim.flip_h = false
+	if walkInputs.x < -0.2:
+		anim.flip_h = true
+	if walkInputs.length() != 0.0:
+		anim.play("run")
+	else:anim.stop()
 #func Jump(DELTA:float):
 	#if Input.is_action_just_pressed("jump") && is_on_floor():
 		#fallDirection += transform.basis.y*jumpForce*DELTA
@@ -65,6 +72,5 @@ func PushRbodys():
 			col.get_collider().apply_central_impulse(-col.get_normal()*(col.get_collider().mass))
 func FeedHUDValues():
 	if hud.index <= hud.bars.size()-1:
-		compLife.FeedLifeValue(hud.bars[hud.index].max_value)
 		hud.bars[hud.index].value = hud.bars[hud.index].max_value
 		hud.index += 1

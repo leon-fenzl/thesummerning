@@ -10,8 +10,7 @@ extends Button
 func _ready():
 	icon = styleType
 func _on_button_down():
-	if spawned == false:
-		spawner.SpawnAlly(packedScn)
-		spawned = true
+	spawner.SpawnAlly(packedScn)
+	spawned = true
 func _on_button_up():
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dguv8d1pggt4e"]
+[gd_scene load_steps=24 format=3 uid="uid://dguv8d1pggt4e"]
 
 [ext_resource type="Script" path="res://scripts/Leon/GameManager.gd" id="1_5jjba"]
 [ext_resource type="Script" path="res://scripts/Leon/HUDCtrlr.gd" id="2_6ebfe"]
@@ -9,11 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://drbw0y4ongpo5" path="res://Scenes/GameScenes/Player/TargetingSystem.tscn" id="5_xjkg3"]
 [ext_resource type="PackedScene" uid="uid://qa0p41iyuuhq" path="res://Scenes/GameScenes/World/body_water.tscn" id="6_0srl6"]
 [ext_resource type="PackedScene" uid="uid://cvq6nsxam78r0" path="res://Scenes/GameScenes/Player/Spawner_Guards.tscn" id="6_gg03c"]
+[ext_resource type="Script" path="res://scripts/Leon/MenuPause.gd" id="6_s24bu"]
 [ext_resource type="PackedScene" uid="uid://b50miitt05n3o" path="res://Scenes/GameScenes/World/body_street.tscn" id="7_ag06k"]
 [ext_resource type="PackedScene" uid="uid://b2kucrvl6bwwk" path="res://Scenes/GameScenes/Player/player.tscn" id="7_astvu"]
 [ext_resource type="PackedScene" uid="uid://rvni5dq3vjyn" path="res://Scenes/GameScenes/World/obj_scene.tscn" id="7_qgg0w"]
 [ext_resource type="PackedScene" uid="uid://b73s335spxtpx" path="res://Scenes/GameScenes/AIs/Spawner_Mobs.tscn" id="11_2yss6"]
 [ext_resource type="PackedScene" uid="uid://c60rpk87fisyu" path="res://Scenes/GameScenes/AIs/Mob_FanGirl.tscn" id="12_jxx48"]
+[ext_resource type="PackedScene" uid="uid://c18m2od08emu0" path="res://Scenes/GameScenes/AIs/Mob_Drunk.tscn" id="15_jlnm4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8hrv"]
 
@@ -38,23 +40,23 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Game" type="Node"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+shadow_enabled = true
+
 [node name="GameManager" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("1_5jjba")
 
-[node name="UserInterface" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
-[node name="HUD" type="Control" parent="UserInterface" node_paths=PackedStringArray("bars")]
-process_mode = 3
+[node name="HUD" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("bars")]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 1
-anchor_right = 32.0
-anchor_bottom = 18.0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -62,7 +64,7 @@ size_flags_vertical = 3
 script = ExtResource("2_6ebfe")
 bars = [null, null, null, null]
 
-[node name="ProgressBar3" type="ProgressBar" parent="UserInterface/HUD"]
+[node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer/HUD"]
 layout_mode = 1
 offset_left = 192.0
 offset_top = 88.0
@@ -77,7 +79,7 @@ value = 10.0
 fill_mode = 3
 show_percentage = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UserInterface/HUD"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
 custom_minimum_size = Vector2(32, 100)
 layout_mode = 1
 anchors_preset = 5
@@ -96,7 +98,7 @@ texture_progress = ExtResource("3_c22pq")
 tint_under = Color(0.47451, 0.47451, 0.466667, 1)
 tint_progress = Color(1, 1, 0, 1)
 
-[node name="Btt_Summonning" parent="UserInterface/HUD" instance=ExtResource("4_j76t0")]
+[node name="Btt_Summonning" parent="CanvasLayer/HUD" instance=ExtResource("4_j76t0")]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 5
@@ -112,23 +114,41 @@ focus_mode = 1
 packedScn = ExtResource("5_njvjy")
 spawnerRef = NodePath("../../../Spawner_Guards")
 
-[node name="MenuPause" type="Control" parent="UserInterface"]
+[node name="MenuPause" type="Control" parent="CanvasLayer"]
+process_mode = 3
 visible = false
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="ColorRect" type="ColorRect" parent="UserInterface/MenuPause"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_s24bu")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MenuPause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -0.00012207
+offset_bottom = -0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.556863)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MenuPause"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 512.0
+offset_top = 200.0
+offset_right = -512.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.556863)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.2, 0.5)
@@ -141,31 +161,33 @@ shape = SubResource("SphereShape3D_g8k5r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("SphereMesh_y500n")
 
-[node name="Body_Water" parent="." instance=ExtResource("6_0srl6")]
+[node name="Water" type="Node" parent="."]
+
+[node name="Body_Water" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -40, 0, 9.95351)
 
-[node name="Body_Water2" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water2" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -30, 0, 9.95351)
 
-[node name="Body_Water3" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water3" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -20, 0, 9.95351)
 
-[node name="Body_Water4" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water4" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -10, 0, 9.95351)
 
-[node name="Body_Water5" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water5" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, -1.48639e-05, 0, 9.95351)
 
-[node name="Body_Water6" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water6" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 9.99999, 0, 9.95351)
 
-[node name="Body_Water7" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water7" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 20, 0, 9.95351)
 
-[node name="Body_Water8" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water8" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30, 0, 9.95351)
 
-[node name="Body_Water9" parent="." instance=ExtResource("6_0srl6")]
+[node name="Body_Water9" parent="Water" instance=ExtResource("6_0srl6")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40, 0, 9.95351)
 
 [node name="InvisiWalls" parent="." instance=ExtResource("7_qgg0w")]
@@ -272,7 +294,9 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.5, 0, -2
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2539, 0, -20)
 
 [node name="TargetingSystem" parent="." instance=ExtResource("5_xjkg3")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 collision_mask = 0
+spring_length = 5.0
 playerRef = NodePath("../Player")
 
 [node name="Player" parent="." groups=["summer"] instance=ExtResource("7_astvu")]
@@ -280,11 +304,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
 speed = 2000.0
 jumpForce = 1000.0
 springRef = NodePath("../TargetingSystem")
-hudRef = NodePath("../UserInterface/HUD")
+hudRef = NodePath("../CanvasLayer/HUD")
 
 [node name="Spawner_Guards" parent="." instance=ExtResource("6_gg03c")]
 
 [node name="Spawner_Mobs" parent="." instance=ExtResource("11_2yss6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.228, 0, -7.22682)
-mobScenes = Array[PackedScene]([ExtResource("12_jxx48"), null, null, null])
+mobScenes = Array[PackedScene]([ExtResource("15_jlnm4"), ExtResource("12_jxx48")])
 playerRef = NodePath("../Player")

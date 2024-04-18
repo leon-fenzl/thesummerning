@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c18m2od08emu0"]
+
+[ext_resource type="PackedScene" uid="uid://cyvqjexn64llj" path="res://Scenes/GameScenes/AIs/base_ai.tscn" id="1_8q5y7"]
+[ext_resource type="Script" path="res://scripts/Leon/AI/Mob_Drunk.gd" id="2_8ajv2"]
+[ext_resource type="SpriteFrames" uid="uid://qyoxoxjlp330" path="res://Scenes/GameScenes/Animators/Drunk_Sheet.tres" id="2_vgoxc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qf8ye"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kjqvo"]
+radius = 1.1
+
+[node name="MobDrunk" instance=ExtResource("1_8q5y7")]
+script = ExtResource("2_8ajv2")
+SPEED = 100.0
+targetTag = "summer"
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_qf8ye")
+
+[node name="Area3D" parent="CompDamage" index="0" groups=["mob"]]
+collision_mask = 2
+
+[node name="CollisionShape3D" parent="CompDamage/Area3D" index="0"]
+shape = SubResource("SphereShape3D_kjqvo")
+
+[node name="AnimatedSprite3D" parent="." index="4"]
+transform = Transform3D(0.3, 0, 0, 0, 0.245746, 0.172073, 0, -0.172073, 0.245746, 0, 0, 0)
+sprite_frames = ExtResource("2_vgoxc")
+animation = &"run"
+frame_progress = 0.8715
+
+[editable path="CompDamage"]

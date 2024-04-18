@@ -1,19 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c60rpk87fisyu"]
+[gd_scene load_steps=5 format=3 uid="uid://c60rpk87fisyu"]
 
 [ext_resource type="PackedScene" uid="uid://cyvqjexn64llj" path="res://Scenes/GameScenes/AIs/base_ai.tscn" id="1_1yxn6"]
+[ext_resource type="Script" path="res://scripts/Leon/AI/Mob_FanGirl.gd" id="2_jnbmo"]
+[ext_resource type="SpriteFrames" uid="uid://cdyvuy4lwesy5" path="res://Scenes/GameScenes/Animators/new_sprite_frames.tres" id="3_7kuyu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e6ydl"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_cbd0r"]
-radius = 1.1
-
-[node name="BaseAI" instance=ExtResource("1_1yxn6")]
+[node name="Mob_FanGirl" instance=ExtResource("1_1yxn6")]
+script = ExtResource("2_jnbmo")
 SPEED = 100.0
+targetTag = "summer"
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("CapsuleShape3D_e6ydl")
 
-[node name="CollisionShape3D" parent="CompDamage/Area3D" index="0"]
-shape = SubResource("SphereShape3D_cbd0r")
-
-[editable path="CompDamage"]
+[node name="AnimatedSprite3D" parent="." index="2"]
+transform = Transform3D(0.49, 0, 0, 0, 0.401385, 0.281052, 0, -0.281052, 0.401385, 0, 0.6, 0)
+modulate = Color(1, 0, 1, 1)
+sprite_frames = ExtResource("3_7kuyu")
+animation = &"run"

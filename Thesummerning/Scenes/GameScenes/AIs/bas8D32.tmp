@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyvqjexn64llj"]
+[gd_scene load_steps=4 format=3 uid="uid://cyvqjexn64llj"]
 
 [ext_resource type="Script" path="res://scripts/Leon/AI/BaseAIStats.gd" id="1_nss5n"]
+[ext_resource type="PackedScene" uid="uid://cifohgtnaqrb4" path="res://Scenes/GameScenes/Comp_Life.tscn" id="2_if4b2"]
+[ext_resource type="PackedScene" uid="uid://bhx5q6ijk3xey" path="res://Scenes/GameScenes/Comp_Damage.tscn" id="3_vk46n"]
 
 [node name="BaseAI" type="CharacterBody3D"]
-collision_layer = 4
-collision_mask = 11
 script = ExtResource("1_nss5n")
 baseType = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="CompLife" parent="." instance=ExtResource("2_if4b2")]
+
+[node name="CompDamage" parent="." instance=ExtResource("3_vk46n")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
