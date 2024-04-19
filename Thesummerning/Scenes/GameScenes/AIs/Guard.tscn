@@ -1,23 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://dud2p4acp3rdk"]
+[gd_scene load_steps=6 format=3 uid="uid://dud2p4acp3rdk"]
 
 [ext_resource type="PackedScene" uid="uid://cyvqjexn64llj" path="res://Scenes/GameScenes/AIs/base_ai.tscn" id="1_hm1bn"]
 [ext_resource type="SpriteFrames" uid="uid://cdyvuy4lwesy5" path="res://Scenes/GameScenes/Animators/new_sprite_frames.tres" id="2_53w3f"]
 [ext_resource type="Script" path="res://Scenes/testScenes/Leon/Guard_Bombado.gd" id="2_tfvaa"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_77fmw"]
+radius = 1.3
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0ym4w"]
 
-[node name="Guard_Bombado" instance=ExtResource("1_hm1bn")]
+[node name="Guard_Bombado" groups=["guards"] instance=ExtResource("1_hm1bn")]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("2_tfvaa")
-LIFE = 10
-targetTag = "mob"
-baseType = 0
+SPEED = null
+life = 3.0
+targetTag = "mobs"
+damage = null
+baseType = null
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="DealDmg" parent="." index="0"]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" parent="DealDmg" index="0"]
+shape = SubResource("SphereShape3D_77fmw")
+
+[node name="CollisionShape3D" parent="." index="1"]
 shape = SubResource("CapsuleShape3D_0ym4w")
 
-[node name="AnimatedSprite3D" parent="." index="2"]
+[node name="AnimatedSprite3D" parent="." index="3"]
 modulate = Color(0, 1, 1, 1)
 sprite_frames = ExtResource("2_53w3f")
 animation = &"run"
+
+[editable path="DealDmg"]

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy3fxw03us0l1"]
-
-[ext_resource type="Script" path="res://Scenes/GameScenes/LifeAndDamageSystem.gd" id="1_x465p"]
-
-[node name="Life&Dmg" type="Area3D"]
-script = ExtResource("1_x465p")
-life = null
-damage = null
-canAttack = null

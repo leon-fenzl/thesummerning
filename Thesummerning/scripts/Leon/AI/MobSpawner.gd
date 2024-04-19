@@ -18,7 +18,6 @@ func _physics_process(delta):
 func SpawnRandomAI():
 	mobNode = mobScenes[index].instantiate()
 	add_child(mobNode)
-	print(mobNode.name)
 	mobNode.target = player
 	mobNode.set_as_top_level(true)
 	if index >= mobScenes.size()-1:

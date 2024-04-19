@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyvqjexn64llj"]
+[gd_scene load_steps=3 format=3 uid="uid://cyvqjexn64llj"]
 
 [ext_resource type="Script" path="res://scripts/Leon/AI/BaseAIStats.gd" id="1_nss5n"]
+[ext_resource type="PackedScene" uid="uid://cy3fxw03us0l1" path="res://Scenes/GameScenes/DealDmg.tscn" id="2_qbhar"]
 
 [node name="BaseAI" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_nss5n")
-baseType = 1
+
+[node name="DealDmg" parent="." instance=ExtResource("2_qbhar")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
@@ -14,8 +16,8 @@ baseType = 1
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Location_Timer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Location_Timer" to="." method="_on_location_timer_timeout"]

@@ -4,29 +4,33 @@
 [ext_resource type="Script" path="res://scripts/Leon/AI/Mob_Drunk.gd" id="2_8ajv2"]
 [ext_resource type="SpriteFrames" uid="uid://qyoxoxjlp330" path="res://Scenes/GameScenes/Animators/Drunk_Sheet.tres" id="2_vgoxc"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qf8ye"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_kjqvo"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_xfg3b"]
 radius = 1.1
 
-[node name="MobDrunk" instance=ExtResource("1_8q5y7")]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rdmje"]
+
+[node name="MobDrunk" groups=["mobs"] instance=ExtResource("1_8q5y7")]
 script = ExtResource("2_8ajv2")
 SPEED = 100.0
+life = 2.0
 targetTag = "summer"
+damage = 1
+baseType = 1
 
-[node name="CollisionShape3D" parent="." index="0"]
-shape = SubResource("CapsuleShape3D_qf8ye")
-
-[node name="Area3D" parent="CompDamage" index="0" groups=["mob"]]
+[node name="DealDmg" parent="." index="0"]
+collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape3D" parent="CompDamage/Area3D" index="0"]
-shape = SubResource("SphereShape3D_kjqvo")
+[node name="CollisionShape3D" parent="DealDmg" index="0"]
+shape = SubResource("SphereShape3D_xfg3b")
 
-[node name="AnimatedSprite3D" parent="." index="4"]
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_rdmje")
+
+[node name="AnimatedSprite3D" parent="." index="3"]
 transform = Transform3D(0.3, 0, 0, 0, 0.245746, 0.172073, 0, -0.172073, 0.245746, 0, 0, 0)
 sprite_frames = ExtResource("2_vgoxc")
 animation = &"run"
 frame_progress = 0.8715
 
-[editable path="CompDamage"]
+[editable path="DealDmg"]

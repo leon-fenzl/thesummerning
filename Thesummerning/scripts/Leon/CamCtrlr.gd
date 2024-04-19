@@ -1,18 +1,24 @@
 extends SpringArm3D
 
-@onready var camera := $GameCamera
 @export var playerRef : NodePath
 @onready var player = get_node(playerRef)
+
+@onready var camera := $GameCamera
+@onready var queryDictionary : Dictionary
+
 @onready var world
 @onready var mousepos
 @onready var rayOrigin 
 @onready var rayEnd
 @onready var query
-@onready var queryDictionary : Dictionary
+
+func _ready():
+	set_as_top_level(true)
 func _physics_process(delta):
-	position = lerp(position,player.global_position,10*delta)
-	DrawRaycast()
-	player.rayhitInfo = queryDictionary
+	if player != null:
+		position = lerp(position,player.global_position,10*delta)
+		DrawRaycast()
+		player.rayhitInfo = queryDictionary
 func DrawRaycast():
 	world = get_world_3d().direct_space_state
 	mousepos = get_viewport().get_mouse_position()

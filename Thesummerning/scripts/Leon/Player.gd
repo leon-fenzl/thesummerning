@@ -1,9 +1,7 @@
 extends CharacterBody3D
 
-@export var speed = 300.0
+@export var speed : float
 @export var jumpForce = 400.0
-@export var mouseSpeed:float
-@export var controllerSpeed:float
 
 @export var springRef : NodePath
 @onready var spring = get_node(springRef)
@@ -20,9 +18,9 @@ extends CharacterBody3D
 @onready var collider := $CollisionShape3D
 @onready var col = KinematicCollision3D
 @onready var rayhitInfo
+@export var LIFE : float
 func _physics_process(delta):
 	GravitySystem(delta)
-	LookAtSystem()
 	Walk(delta)
 	GetCollisions()
 	AnimatorController()
@@ -74,3 +72,13 @@ func FeedHUDValues():
 	if hud.index <= hud.bars.size()-1:
 		hud.bars[hud.index].value = hud.bars[hud.index].max_value
 		hud.index += 1
+func FeedLifeValue(value:int):
+	pass
+func TakeDamage(dmg:int):
+	if LIFE > 0:
+		LIFE -= dmg
+		print(name,LIFE)
+	else:
+		Death()
+func Death():
+	queue_free()

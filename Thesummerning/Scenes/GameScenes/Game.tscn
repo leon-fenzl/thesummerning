@@ -293,12 +293,6 @@ transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 30.5, 0, -2
 [node name="Body_Street9" parent="NavigationRegion3D/Street" instance=ExtResource("7_ag06k")]
 transform = Transform3D(1.00535, 0, 0, 0, 1.00535, 0, 0, 0, 1.00535, 40.2539, 0, -20)
 
-[node name="TargetingSystem" parent="." instance=ExtResource("5_xjkg3")]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-collision_mask = 0
-spring_length = 5.0
-playerRef = NodePath("../Player")
-
 [node name="Player" parent="." groups=["summer"] instance=ExtResource("7_astvu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48386, 0)
 speed = 2000.0
@@ -311,4 +305,10 @@ hudRef = NodePath("../CanvasLayer/HUD")
 [node name="Spawner_Mobs" parent="." instance=ExtResource("11_2yss6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.228, 0, -7.22682)
 mobScenes = Array[PackedScene]([ExtResource("15_jlnm4"), ExtResource("12_jxx48")])
+playerRef = NodePath("../Player")
+
+[node name="TargetingSystem" parent="." instance=ExtResource("5_xjkg3")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -1.48386, 0)
+collision_mask = 0
+spring_length = 5.0
 playerRef = NodePath("../Player")
